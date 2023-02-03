@@ -8,8 +8,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb; //private makes it so that it cant be affected by other scripts
+    private BoxCollider2D collider;
     private SpriteRenderer sprite;
     private Animator anim; 
+
+    [SerializeField] private LayerMask jumpableGround;
 
     //animation variables
     private float dirX = 0f;
@@ -18,11 +21,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float jumpForce = 10f;
 
+    //enum is making our own data type that holds whatever is in the curly braces
+    private enum MovementState { idle, run, jump, fall }
+
     // Start is called before the first frame update
     private void Start()
     {
         //affecting components in unity
         rb = GetComponent<Rigidbody2D>(); 
+        collider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
     }
@@ -35,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         //By multiplying input by a certain velocity (float number i think) then it will become pos or neg
         rb.velocity = new Vector2 (dirX * moveSpeed, rb.velocity.y); 
 
-        if (Input.GetButtonDown("Jump")) //get button down isntead of get key down uses unity's input manager system
+        if (Input.GetButtonDown("Jump") && IsGrounded()) //get button down isntead of get key down uses unity's input manager system
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce); //x and y axis parameters
         }
@@ -48,23 +55,40 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateAnimation() 
     {
+        MovementState state;
+
         //running check
         if (dirX > 0f)
         {
-            anim.SetBool("running", true);
+            state = MovementState.run;
             sprite.flipX = false;
         }
         else if (dirX < 0f)
         {
-            anim.SetBool("running", true);
+            state = MovementState.run;
             sprite.flipX = true;
         }
         else
         {
-            anim.SetBool("running", false);
+            state = MovementState.idle;
         }
-        //jumping check
 
-        //if player is in the air, use jumping/freefall sprites
+        //airborne check
+        if (rb.velocity.y > .1f)
+        {
+            state = MovementState.jump;
+        }
+        else if (rb.velocity.y < -.1f)
+        {
+            state = MovementState.fall;
+        }
+        
+        anim.SetInteger("state", (int)state);
+    }
+
+    private bool IsGrounded()
+    {
+        //I really need to get the unity extension so i can see the parameters for unity shit
+        return Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0f, Vector2.down, .1f, jumpableGround); 
     }
 }
