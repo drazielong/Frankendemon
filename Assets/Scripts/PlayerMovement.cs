@@ -1,9 +1,9 @@
+//Tutorial by Coding in Flow: https://www.youtube.com/watch?v=Ii-scMenaOQ&list=PLrnPJCHvNZuCVTz6lvhR81nnaf1a-b67U
+//Edits and tweaks in code by myself
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//Tutorial by Coding in Flow: https://www.youtube.com/watch?v=Ii-scMenaOQ&list=PLrnPJCHvNZuCVTz6lvhR81nnaf1a-b67U
-//Edits and tweaks in code by myself - Rosie
-
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -37,17 +37,23 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        //stop movement if ur in dialogue... problem is u keep sliding for a bit if u activate while running
+        //its not too bad besides that but i would like to just stop dead in your tracks
+        //also you are stuck in ur last animation, i want it to default to idle
+        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            return;
+        }
+        
         dirX = Input.GetAxisRaw("Horizontal"); //the raw part instantly drops velocity to 0 
         //if the input is negative or positive, move left or right repsectively
         //By multiplying input by a certain velocity (float number i think) then it will become pos or neg
         rb.velocity = new Vector2 (dirX * moveSpeed, rb.velocity.y); 
-
+        
         if (Input.GetButtonDown("Jump") && IsGrounded()) //get button down isntead of get key down uses unity's input manager system
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce); //x and y axis parameters
         }
-
-        //if the player is not on the ground disable jumping
 
         //animation checks
         UpdateAnimation();
@@ -55,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateAnimation() 
     {
+
         MovementState state;
 
         //running check
