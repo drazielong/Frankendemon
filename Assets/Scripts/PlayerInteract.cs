@@ -1,6 +1,9 @@
 //https://www.youtube.com/watch?v=gGUtoy4Knnw interactable objects
 //https://www.youtube.com/watch?v=VwE-Oo8Sn9A adding item to inventory
 
+//alright so apparently if u try to interact when ur not near an object it kinda breaks
+//deprecated for now...
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,27 +19,32 @@ public class PlayerInteract : MonoBehaviour
     {
         if (Input.GetButtonDown("Interact") && currentObj.CompareTag("interObject")) 
         {
-           currentObj.SendMessage ("DoInteraction");
+           currentObj.SendMessage("DoInteraction");
         }
+        /*
         else if (Input.GetButtonDown("Interact") && currentObj.CompareTag("interChar")) 
         {
-            currentObj.SendMessage ("TriggerDialogue");
+            currentObj.SendMessage("Update");
         }
+        */
+        //note: if i wanted all interaction to be based around the player instead of attaching to objects
+        //i would need to have the visualcue be called from here instead of at the object
+        //actually i think thats it and it should be easy.
+        //on enter and exit add || other.CompareTag("interChar")
     }
 
     //set current obj to the one you are touching if its an interactable object (tag)
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("interObject") || other.CompareTag("interChar"))
+        if (other.CompareTag("interObject"))
         {
-            //here is where i might split the visualcue but i think we can customize it based on object so it should be ok
             currentObj = other.gameObject; 
         }
     }
     //when ur not touching, reset to null
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("interObject") || other.CompareTag("interChar"))
+        if (other.CompareTag("interObject"))
         {
             if(other.gameObject == currentObj)
             {

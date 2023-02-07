@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     //adding these serialize field brackets allow us to edit these variables in unity
     //you can also make them public, but that would allow other scripts to fuck w em
     [SerializeField] private float moveSpeed = 10f;
-    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float jumpForce = 12f;
 
     //enum is making our own data type that holds whatever is in the curly braces
     private enum MovementState { idle, run, jump, fall }
@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
         //also you are stuck in ur last animation, i want it to default to idle
         if (DialogueManager.GetInstance().dialogueIsPlaying)
         {
+            
             return;
         }
         

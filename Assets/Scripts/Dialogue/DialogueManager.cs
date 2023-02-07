@@ -103,7 +103,8 @@ public class DialogueManager : MonoBehaviour
             Debug.LogError("more choices were given than ui can support.");
         }
 
-        //enable and initialize the choices up tot he amount of choices for this line of dialogue
+        //enable and initialize the choices up to the amount of choices allowed for this line of dialogue
+        //we only have two max
         int index = 0;
         foreach(Choice choice in currentChoices)
         {
@@ -120,7 +121,7 @@ public class DialogueManager : MonoBehaviour
 
         StartCoroutine(SelectFirstChoice());
     }
-
+    // i believe this is to have the player automatically select the first choice if they were to click the interact button
     private IEnumerator SelectFirstChoice()
     {
         //event system requires we clear it first, then wait for at least one frame before we set current select obj

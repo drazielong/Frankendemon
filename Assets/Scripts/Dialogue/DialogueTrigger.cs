@@ -16,7 +16,7 @@ public class DialogueTrigger : MonoBehaviour
         visualCue.SetActive(false);
     }
 
-    private void Update()
+    private void Update() 
     {
         if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
@@ -26,10 +26,10 @@ public class DialogueTrigger : MonoBehaviour
                 visualCue.SetActive(false); 
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
             }
-            else
-            {
-                visualCue.SetActive(false);
-            }
+        }
+        else
+        {
+            visualCue.SetActive(false);
         }
     }
 
