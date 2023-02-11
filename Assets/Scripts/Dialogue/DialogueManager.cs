@@ -1,4 +1,5 @@
 //https://www.youtube.com/watch?v=vY0Sk93YUhA
+//I also used his tutorials for the other ink stuff
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,9 @@ public class DialogueManager : MonoBehaviour
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private TextMeshProUGUI speakerText;
+    [SerializeField] private Animator portraitAnimator;
+    private Animator layoutAnimator;
     
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -20,6 +24,10 @@ public class DialogueManager : MonoBehaviour
     private Story currentStory;
     public bool dialogueIsPlaying {get; private set;} //read-only to outside scripts
     private static DialogueManager instance;
+
+    private const string SPEAKER_TAG = "speaker";
+    private const string PORTRAIT_TAG = "portrait";
+    private const string LAYOUT_TAG = "layout";
 
     private void Awake()
     {
@@ -37,6 +45,7 @@ public class DialogueManager : MonoBehaviour
     
     void Start()
     {
+        layoutAnimator = dialoguePanel.GetComponent<Animator>();
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
 
@@ -56,10 +65,17 @@ public class DialogueManager : MonoBehaviour
         {
             return;
         }
-
-        if (Input.GetButtonDown("Interact"))
+        
+        // handle continuing to the next line in the dialogue when submit is pressed
+        if ( currentStory.currentChoices.Count == 0 && Input.GetButtonDown("Interact"))
         {
-            ContinueStory();
+            ContinueStory();        
+        }
+    
+        //player can cancel dialogue at any time with "x"
+        if (dialogueIsPlaying && Input.GetButtonDown("Cancel"))
+        {
+            StartCoroutine(ExitDialogueMode());
         }
     }
 
@@ -68,7 +84,10 @@ public class DialogueManager : MonoBehaviour
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
-        ContinueStory();
+        speakerText.text = "???";
+        portraitAnimator.Play("default");
+        layoutAnimator.Play("right");
+
     }
 
     private IEnumerator ExitDialogueMode()
@@ -87,10 +106,43 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text = currentStory.Continue();
             //display choices if any
             DisplayChoices();
+            HandleTags(currentStory.currentTags);
         }
         else
         {
             StartCoroutine(ExitDialogueMode());
+        }
+    }
+
+    private void HandleTags(List<string> currentTags)
+    {
+        foreach(string tag in currentTags)
+        {
+            //parse tag into their key:value pair
+            string[] splitTag = tag.Split(':');
+            if (splitTag.Length != 2)
+            {
+                Debug.LogError("Tag could not be approprately parsed. There is either more or less than 2 values: " + tag);
+            }
+            string tagKey = splitTag[0].Trim(); //trim gets rid of empty space that may be at the beginning or end of the string
+            string tagValue = splitTag[1].Trim();
+
+            //handle tag
+            switch(tagKey)
+            {
+                case SPEAKER_TAG:
+                    speakerText.text = tagValue;
+                    break;
+                case PORTRAIT_TAG: //not detecting portrait tags..
+                    portraitAnimator.Play(tagValue);
+                    break;
+                case LAYOUT_TAG:
+                    layoutAnimator.Play(tagValue);
+                    break;
+                default:
+                    Debug.LogWarning("Tag came in but is not currently being handled: " + tag);
+                    break;
+            }
         }
     }
 
@@ -131,7 +183,14 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void MakeChoice(int choiceIndex)
-    {
+    {   
         currentStory.ChooseChoiceIndex(choiceIndex);
+    }
+
+    public void GiveEssence()
+    {
+        //if give essence variable in ink file == true
+        //set visible/active their corresponding essence
+        //(seralize related essence to demon)
     }
 }

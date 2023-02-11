@@ -18,12 +18,22 @@ public class InteractionObject : MonoBehaviour
         if (playerInRange)
         {
             visualCue.SetActive(true); 
-            if (Input.GetButtonDown("Interact"))
+            if (Input.GetButtonDown("Interact")) //&& is interobj
             {
                 visualCue.SetActive(false); 
                 gameObject.SetActive(false);
                 //add to inventory
             }
+            /*
+            if (Input.GetButtonDown("Interact")) //&& is interessence
+            {
+                visualCue.SetActive(false); 
+                gameObject.SetActive(false);
+                //add to essence inventory
+                //stretch: play an animation (dearil taking it for you)
+                //stretch stretch: essence is unusable until you take it to Mortis who generates new limbs for you ...
+            }
+            */
         }
         else
         {

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - interObject
   - interChar
+  - interEssence
   layers:
   - Default
   - TransparentFX
