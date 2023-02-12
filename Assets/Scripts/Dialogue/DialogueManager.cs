@@ -141,10 +141,11 @@ public class DialogueManager : MonoBehaviour
                 case SPEAKER_TAG:
                     speakerText.text = tagValue;
                     break;
-                case PORTRAIT_TAG: //not detecting portrait tags..
+                case PORTRAIT_TAG:
                     portraitAnimator.Play(tagValue);
                     break;
                 case LAYOUT_TAG:
+                    Debug.Log(tag);
                     layoutAnimator.Play(tagValue);
                     break;
                 default:

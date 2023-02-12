@@ -1238,7 +1238,7 @@ Transform:
   m_Children:
   - {fileID: 2038309673}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &721404843
 GameObject:
@@ -1249,9 +1249,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 721404845}
+  - component: {fileID: 721404847}
   - component: {fileID: 721404844}
   - component: {fileID: 721404846}
-  - component: {fileID: 721404847}
+  - component: {fileID: 721404848}
   m_Layer: 0
   m_Name: RawEssence
   m_TagString: interEssence
@@ -1300,7 +1301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5395ac9e229b0a6489d4b4fc50d87186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualCue: {fileID: 1759863568}
   roadblock: {fileID: 0}
 --- !u!61 &721404847
 BoxCollider2D:
@@ -1328,6 +1328,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5850697, y: 2.1508045}
   m_EdgeRadius: 0
+--- !u!114 &721404848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721404843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae379a527d5ec14e8398c3ba8292a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualCue: {fileID: 1759863568}
+  inkJSON: {fileID: 4900000, guid: 52320a83e5afbf847953bb7d6cbd962c, type: 3}
 --- !u!1 &944687159
 GameObject:
   m_ObjectHideFlags: 0
@@ -22557,7 +22571,7 @@ Transform:
   - {fileID: 1713598065}
   - {fileID: 1878491683}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1662476927
 GameObject:
@@ -23017,6 +23031,7 @@ GameObject:
   - component: {fileID: 1878491683}
   - component: {fileID: 1878491685}
   - component: {fileID: 1878491684}
+  - component: {fileID: 1878491686}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: interRoadblock
@@ -23051,7 +23066,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5395ac9e229b0a6489d4b4fc50d87186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualCue: {fileID: 1713598064}
   roadblock: {fileID: 1641392511}
 --- !u!61 &1878491685
 BoxCollider2D:
@@ -23079,6 +23093,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.2717667, y: 2.4640274}
   m_EdgeRadius: 0
+--- !u!114 &1878491686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878491682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae379a527d5ec14e8398c3ba8292a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualCue: {fileID: 1713598064}
+  inkJSON: {fileID: 4900000, guid: 67007e3ab5f5b0d41b8878424128fbc1, type: 3}
 --- !u!1 &1909462851
 GameObject:
   m_ObjectHideFlags: 0

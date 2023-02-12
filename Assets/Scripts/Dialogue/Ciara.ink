@@ -1,6 +1,6 @@
 INCLUDE globals.ink
 
-Hello. #speaker:Ciara
+Hello. #speaker:Ciara #portrait:default #layout:right
 
 + [Ask about what she's doing.] -> ask
 + [Talk about human fantasy stories.] -> fantasy

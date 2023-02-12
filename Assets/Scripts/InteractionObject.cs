@@ -4,55 +4,47 @@ using UnityEngine;
 
 public class InteractionObject : MonoBehaviour
 {
-    [Header("Visual Cue")]
-    [SerializeField] private GameObject visualCue;
     [SerializeField] private GameObject roadblock;
 
     private bool playerInRange;
     //has raw essence -- attach to player?
-    public static bool hasRawEssence;
+    //private static bool hasRawEssence;
     //has correct essence equipped -- malleable...
     //private bool correctEssence -- for later when we have more than one
-
-    private void Awake()
-    {
-        visualCue.SetActive(false);
-        //hasRawEssence = false;
-    }
+    //private DialogueVariables dialogueVariables;
 
     private void Update() 
     {
         if (playerInRange)
         {
-            visualCue.SetActive(true);
-
             if (Input.GetButtonDown("Interact") && this.CompareTag("interRoadblock")) //&& hasCorrectEssence
             {
-                visualCue.SetActive(false); 
-                gameObject.SetActive(false);
-                roadblock.SetActive(false);
-                //note: roadblocks need to have collision, so would this be an invis spot that takes in this script instead
+                bool hascorrectEssence = ((Ink.Runtime.BoolValue) DialogueManager
+                    .GetInstance()
+                    .GetVariableState("has_correctEssence")).value;
+                if (hascorrectEssence)
+                {
+                    gameObject.SetActive(false);
+                    roadblock.SetActive(false);
+                    //note: roadblocks need to have collision, so would this be an invis spot that takes in this script instead
+                }
             }
 
             if (Input.GetButtonDown("Interact") && this.CompareTag("interItem"))
             {
-                visualCue.SetActive(false); 
                 gameObject.SetActive(false);
                 //add to inventory
             }
             
             if (Input.GetButtonDown("Interact") && this.CompareTag("interEssence"))
             {
-                visualCue.SetActive(false); 
                 gameObject.SetActive(false);
                 //add to essence "inventory"
-                hasRawEssence = true;
-                //stretch: play an animation (dearil taking it for you)
+                //hasRawEssence = true;
+                //stretch: play an animation (dearil taking it for you)??
+                //variable that can be detected by ink?!?
+                //i made a new ink file to edit a new global.... ugh
             }
-        }
-        else
-        {
-            visualCue.SetActive(false);
         }
     }
 

@@ -16,12 +16,10 @@ public class EssenceController : MonoBehaviour
 
         switch (rawEssenceName)
         {
-            case "":
-                Debug.Log("blank");
+            case "":         
                 essence.SetActive(false);
                 break;
             case "Ciara":
-                Debug.Log("not blank");
                 //set to orange
                 essence.SetActive(true);
                 break;
