@@ -33,8 +33,6 @@ public class UIInventoryPage : MonoBehaviour
 
     private void HandleItemSelection(UIInventoryItem obj)
     {
-        //set up clicking stuff for this to detect anything
-        //if i can do arrow keys that would be great
         itemDescription.SetDescription(image, title, description);
         //select item
         //listOfUIItems[0].Select();

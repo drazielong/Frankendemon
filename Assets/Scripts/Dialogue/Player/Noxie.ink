@@ -1,0 +1,3 @@
+//if you encounter a roadblock...
+I need a specific power in order to get past this. #speaker:Noxie layout:left
+->END

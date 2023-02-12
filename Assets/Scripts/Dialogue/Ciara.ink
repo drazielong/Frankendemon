@@ -1,3 +1,5 @@
+INCLUDE globals.ink
+
 Hello. #speaker:Ciara
 
 + [Ask about what she's doing.] -> ask
@@ -9,4 +11,5 @@ I'm tending to the flock, clearly.
 
 === fantasy ===
 You've read them at the library as well?
+~ essence_name = "Ciara"
 ->END

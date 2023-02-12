@@ -7,9 +7,13 @@ using UnityEngine.UI;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
+using Ink.UnityIntegration;
 
 public class DialogueManager : MonoBehaviour
 {
+    [Header("Globals Ink File")]
+    [SerializeField] private InkFile globalsInkFile;
+
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
@@ -28,6 +32,7 @@ public class DialogueManager : MonoBehaviour
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
     private const string LAYOUT_TAG = "layout";
+    private DialogueVariables dialogueVariables;
 
     private void Awake()
     {
@@ -36,6 +41,7 @@ public class DialogueManager : MonoBehaviour
             Debug.LogWarning("Found more than one Dialogue Manager in the scene");
         }
         instance = this;
+        dialogueVariables = new DialogueVariables(globalsInkFile.filePath);
     }
 
     public static DialogueManager GetInstance()
@@ -87,6 +93,7 @@ public class DialogueManager : MonoBehaviour
         speakerText.text = "???";
         portraitAnimator.Play("default");
         layoutAnimator.Play("right");
+        dialogueVariables.StartListening(currentStory);
 
     }
 
@@ -97,6 +104,7 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
+        dialogueVariables.StopListening(currentStory);
     }
 
     private void ContinueStory()
@@ -192,5 +200,17 @@ public class DialogueManager : MonoBehaviour
         //if give essence variable in ink file == true
         //set visible/active their corresponding essence
         //(seralize related essence to demon)
+    }
+
+    //allows unity to access the variable from ink file (dictionary) and use it
+    public Ink.Runtime.Object GetVariableState(string variableName)
+    {
+        Ink.Runtime.Object variableValue = null;
+        dialogueVariables.variables.TryGetValue(variableName, out variableValue);
+        if (variableValue == null)
+        {
+            Debug.LogWarning("Ink Variable was found to be null: " + variableName);
+        }
+        return variableValue;
     }
 }

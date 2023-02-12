@@ -1,7 +1,7 @@
 //Tutorial by Coding in Flow: https://www.youtube.com/watch?v=Ii-scMenaOQ&list=PLrnPJCHvNZuCVTz6lvhR81nnaf1a-b67U
-//Edits and tweaks in code by myself
 
 using System.Collections;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,6 +37,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (Input.GetButtonDown("Reset"))
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
         //stop movement if ur in dialogue... problem is u keep sliding for a bit if u activate while running
         //its not too bad besides that but i would like to just stop dead in your tracks
         //also you are stuck in ur last animation, i want it to default to idle

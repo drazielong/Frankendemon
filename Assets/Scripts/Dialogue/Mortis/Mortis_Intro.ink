@@ -26,6 +26,6 @@ I've observed that demons are able to exchange their essences with each other at
 These essences are malleable and change as they're passed from person to person, like they are adapting to the new host in a way.
 By infusing them into your soul, you physically adopt new characteristics such as powers and growths upon your body.
 Typically a human soul should not be able to infuse a demon's essence, but you are special!
-Not only because you're human soul has already been fused with a demon's body, but because your body is malleable as well.
-Before I continue my incessant ramblings, why don't you try finding someone willing to share their essence with you?
+Not only because your soul has already been fused with a demon's body, but because your body is malleable as well.
+Before I continue my incessant ramblings, why don't you try finding someone willing to share their essence with you? Come back to me when you when you have.
 ->END
