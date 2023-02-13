@@ -5,6 +5,8 @@ using UnityEngine;
 public class InteractionObject : MonoBehaviour
 {
     [SerializeField] private GameObject roadblock;
+    [Header("Ink JSON")]
+    [SerializeField] private TextAsset inkJSON;
 
     private bool playerInRange;
     //has raw essence -- attach to player?
@@ -38,8 +40,8 @@ public class InteractionObject : MonoBehaviour
             
             if (Input.GetButtonDown("Interact") && this.CompareTag("interEssence"))
             {
+                DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
                 gameObject.SetActive(false);
-                //add to essence "inventory"
                 //hasRawEssence = true;
                 //stretch: play an animation (dearil taking it for you)??
                 //variable that can be detected by ink?!?

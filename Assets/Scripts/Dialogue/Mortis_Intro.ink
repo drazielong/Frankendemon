@@ -3,7 +3,6 @@ INCLUDE globals.ink
 //if u have raw essence skip
 {has_rawEssence: -> essence}
 Hello! Hi! Salutations! #speaker:Mortis #portrait:mortis_happy #layout:right
-Look! I'm over here now! #layout:left
 You've already started walking, so why don't we hurry along with the readjustment period? #layout:right
 How are those relatively new limbs treating you?
 + ["Was I in an accident?"] -> dead
@@ -37,9 +36,9 @@ Not only because your soul has already been fused with a demon's body, but becau
 I see you've found an essence from someone!#speaker:Mortis #portrait:mortis_happy #layout:right
 As I suspected, you can't interact with it as demons normally would.
 Allow me.
-(Mortis inserts the essence into some kind of machine. It groans and creaks as it processes it.)
+(Mortis inserts the essence into some kind of machine. It groans and creaks as it processes it.) #portrait:invisiblePortrait #layout:none
 (Eventually it finishes the task and a glass tube opens up to reveal a pair of arms.)
-Voila! I have made you a new pair of arms!
+Voila! I have made you a new pair of arms! #portrait:mortis_happy #layout:right
 How did you do that???#speaker:Noxie #portrait:default #layout:left
 As much as I would love to get into the details, I shall simplify it for you.#speaker:Mortis #portrait:mortis_happy  #layout:right
 Very very verrry simply, I took that essence and infused it with the preserved limbs of a recently deceased. 
