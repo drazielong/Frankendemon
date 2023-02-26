@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D rb; //private makes it so that it cant be affected by other scripts
+    private Rigidbody2D rb;
     private BoxCollider2D collider;
     private SpriteRenderer sprite;
     private Animator anim; 
@@ -16,8 +16,6 @@ public class PlayerMovement : MonoBehaviour
 
     //animation variables
     private float dirX = 0f;
-    //adding these serialize field brackets allow us to edit these variables in unity
-    //you can also make them public, but that would allow other scripts to fuck w em
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float jumpForce = 12f;
 
@@ -41,21 +39,26 @@ public class PlayerMovement : MonoBehaviour
         {
             SceneManager.LoadScene("SampleScene");
         }
-        //stop movement if ur in dialogue... problem is u keep sliding for a bit if u activate while running
-        //its not too bad besides that but i would like to just stop dead in your tracks
-        //also you are stuck in ur last animation, i want it to default to idle
-        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        //Quit button for now -- turn into menu later
+        if (Input.GetButtonDown("Quit"))
         {
-            
-            return;
+            Application.Quit();
         }
         
+        //stop movement if ur in dialogue
+        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            rb.velocity = new Vector2 (0 * moveSpeed, rb.velocity.y);
+            anim.SetInteger("state", (int)MovementState.idle);
+            return;
+        }
+
         dirX = Input.GetAxisRaw("Horizontal"); //the raw part instantly drops velocity to 0 
         //if the input is negative or positive, move left or right repsectively
         //By multiplying input by a certain velocity (float number i think) then it will become pos or neg
         rb.velocity = new Vector2 (dirX * moveSpeed, rb.velocity.y); 
-        
-        if (Input.GetButtonDown("Jump") && IsGrounded()) //get button down isntead of get key down uses unity's input manager system
+
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce); //x and y axis parameters
         }
@@ -69,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
         MovementState state;
 
-        //running check
+        //running check - switch?
         if (dirX > 0f)
         {
             state = MovementState.run;

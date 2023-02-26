@@ -8,7 +8,7 @@ public class UIInventoryItem : MonoBehaviour
 {
     [SerializeField] private Image itemImage;
     [SerializeField] private Image borderImage;
-    private bool empty = true;
+    //private bool empty = true;
 
     public void Awake()
     {
@@ -19,7 +19,7 @@ public class UIInventoryItem : MonoBehaviour
     public void ResetData()
     {
         this.itemImage.gameObject.SetActive(false);
-        empty = true;
+        //empty = true;
     }
 
     public void Deselect()
@@ -31,6 +31,6 @@ public class UIInventoryItem : MonoBehaviour
     {
         this.itemImage.gameObject.SetActive(true);
         this.itemImage.sprite = sprite;
-        empty = false;
+        //empty = false;
     }
 }

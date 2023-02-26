@@ -8,6 +8,7 @@ TagManager:
   - interEssence
   - interItem
   - interRoadblock
+  - essenceText
   layers:
   - Default
   - TransparentFX

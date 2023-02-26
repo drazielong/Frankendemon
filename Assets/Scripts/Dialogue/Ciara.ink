@@ -1,5 +1,5 @@
 INCLUDE globals.ink
-{essence_name == "Ciara": -> helloagain}
+{Ciara_completed == true: -> helloagain}
 //play after getting to the end of fantasy (no longer accessible)
 
 Hello. #speaker:Ciara #portrait:default #layout:right
@@ -8,8 +8,8 @@ Could you share your essence with me?
 Um... that's a bit forward. #speaker:Ciara #layout:right
 (Maybe I should try to get to know her first.) #speaker:Noxie #layout:left
 
-+ [Ask about what she's doing.] -> ask
-+ [Compliment her dress.] -> fantasy
+* [Ask about what she's doing.] -> ask
+* [Compliment her dress.] -> fantasy
 
 === ask ===
 I'm tending to the flock, clearly. #speaker:Ciara #layout:right
@@ -30,16 +30,15 @@ They write stories about having the power to fly, yet they have airplanes and te
 Maybe one day I'll make a trip to the Temperamental Domain and make a contract with one. I would love to meet them.
 Actually... I was once a human! #speaker:Noxie #layout:left
 Really? Then could you tell me? What makes you want to escape into fantasy? #speaker:Ciara #layout:right
-Er... I uh, have no idea how to answer that. #speaker:Noxie #layout:left
-I don't really have any memories of my life as a human... but I kinda have some vague feelings about it?
-To me, stories are just something fun to do something different, ya know?
+I uh... I dunno how to answer that. #speaker:Noxie #layout:left
+I don't really have any memories of my life as a human... but I kinda have some vague feelings about it.
+To me, stories are just something fun and different to do, ya know?
 ...#speaker:Ciara #layout:right
 I suppose you're right. I do the same thing as I engross myself in these stories myself.
 I feel like there is more behind a creator's intentions, though. 
 If I wrote something, it would probably just be about my life or something. #speaker:Noxie #layout:left
 Hm... maybe that is part of it. #speaker:Ciara #layout:right
 Could it be a way to communicate something that can't be put into simple terms?
-I'll dwell on it further. Perhaps it is time I shed my sendimentary lifestyle...
 Noxie, is it? Thank you for indulging in my ruminations. 
 I wouldn't mind sharing my essence with you.
 Really?! #speaker:Noxie #layout:left
@@ -47,6 +46,7 @@ It is my way of communicating something that can't be put into words. #speaker:C
 When your memories return, I expect to hear more about the human world.
 
 ~ essence_name = "Ciara"
+~ Ciara_completed = true
 ->END
 
 === helloagain ===

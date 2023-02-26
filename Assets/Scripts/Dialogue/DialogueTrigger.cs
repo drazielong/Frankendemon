@@ -21,13 +21,34 @@ public class DialogueTrigger : MonoBehaviour
         if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
             visualCue.SetActive(true); 
+            if (this.CompareTag("interRoadblock") && Input.GetButtonDown("Interact"))
+            {
+                if (Globals.currentPower == "Ciara")
+                {
+                    visualCue.SetActive(false);
+                    DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+                    gameObject.SetActive(false);
+                }
+                else
+                {
+                    DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+                }
+            }
+            
+            if (Input.GetButtonDown("Interact") && this.CompareTag("interEssence"))
+            {
+                visualCue.SetActive(false);
+                DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+                gameObject.SetActive(false);
+            }
+
             if (Input.GetButtonDown("Interact"))
             {
                 visualCue.SetActive(false); 
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
             }
         }
-        else
+        else 
         {
             visualCue.SetActive(false);
         }
