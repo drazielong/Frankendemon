@@ -9,6 +9,7 @@ public class UIInventoryPage : MonoBehaviour
     [SerializeField] private RectTransform contentPanel;
     [SerializeField] private UIInventoryDescription itemDescription;
 
+    //get index and reference against inventory data
     List<UIInventoryItem> listOfUIItems = new List<UIInventoryItem>();
 
     public Sprite image;
@@ -23,7 +24,7 @@ public class UIInventoryPage : MonoBehaviour
     //add items to inventory
     public void InitializeInventoryUI(int inventorysize)
     {
-        for (int i = 0; i < inventorysize; i++)
+        for (int i = 0; i < inventorysize; i++) //double check why am i using an int instead of the size of the array or list or whatever
         {
             UIInventoryItem uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
             uiItem.transform.SetParent(contentPanel);

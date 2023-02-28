@@ -2,7 +2,7 @@ INCLUDE globals.ink
 
 //if u have raw essence skip
 {has_rawEssence: -> essence}
-Hello! Hi! Salutations! #speaker:Mortis #portrait:mortis_happy #layout:right
+Hello! Hi! Salutations! #speaker:Mortis #portrait:mortis_happy #layout:right #player portrait:noxie_thinking
 You've already started walking, so why don't we hurry along with the readjustment period? #layout:right
 How are those relatively new limbs treating you?
 + ["Was I in an accident?"] -> dead

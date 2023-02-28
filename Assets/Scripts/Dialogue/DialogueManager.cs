@@ -15,10 +15,11 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextAsset loadGlobalsJSON;
 
     [Header("Dialogue UI")]
-    [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private GameObject dialogueController;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI speakerText;
     [SerializeField] private Animator portraitAnimator;
+    [SerializeField] private Animator portraitAnimatorPlayer;
     private Animator layoutAnimator;
     
     [Header("Choices UI")]
@@ -31,6 +32,7 @@ public class DialogueManager : MonoBehaviour
 
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
+    private const string PLAYER_PORTRAIT_TAG = "player portrait";
     private const string LAYOUT_TAG = "layout";
     private DialogueVariables dialogueVariables;
 
@@ -51,9 +53,9 @@ public class DialogueManager : MonoBehaviour
     
     void Start()
     {
-        layoutAnimator = dialoguePanel.GetComponent<Animator>();
+        layoutAnimator = dialogueController.GetComponent<Animator>();
         dialogueIsPlaying = false;
-        dialoguePanel.SetActive(false);
+        dialogueController.SetActive(false);
 
         //get all choices text
         choicesText = new TextMeshProUGUI[choices.Length];
@@ -89,9 +91,10 @@ public class DialogueManager : MonoBehaviour
     {
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
-        dialoguePanel.SetActive(true);
+        dialogueController.SetActive(true);
         speakerText.text = "???";
         portraitAnimator.Play("default");
+        portraitAnimatorPlayer.Play("default");
         layoutAnimator.Play("right");
         dialogueVariables.StartListening(currentStory);
 
@@ -102,7 +105,7 @@ public class DialogueManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         dialogueIsPlaying = false;
-        dialoguePanel.SetActive(false);
+        dialogueController.SetActive(false);
         dialogueText.text = "";
         dialogueVariables.StopListening(currentStory);
     }
@@ -143,6 +146,9 @@ public class DialogueManager : MonoBehaviour
                     break;
                 case PORTRAIT_TAG:
                     portraitAnimator.Play(tagValue);
+                    break;
+                case PLAYER_PORTRAIT_TAG:
+                    portraitAnimatorPlayer.Play(tagValue);
                     break;
                 case LAYOUT_TAG:
                     Debug.Log(tag);

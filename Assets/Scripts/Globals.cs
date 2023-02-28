@@ -8,6 +8,7 @@ public class Globals
     public static bool hasRawEssence;
     public static string currentEssence;
     public static string currentPower; //prob a unity variable tbh but is also used in dialogue so.??
+    public static string[] powerList; //list of powers you've collected. entry 0 will be your default look 
 
     static public void EssenceCheck()
     {
