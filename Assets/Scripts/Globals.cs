@@ -24,4 +24,14 @@ public class Globals
             .GetInstance()
             .GetVariableState("power_name")).value;
     }
+
+    //public static void PowerSwap()
+    //if current power is NOT in the array
+        //add to end of array
+    //else do nothing ig
+
+    //when you click the C key && not in dialogue
+        //change currentpower to next in array
+        //if array is at end, loop back to 0
+        //also change variable in ink?
 }

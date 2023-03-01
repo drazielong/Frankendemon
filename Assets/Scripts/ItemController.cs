@@ -15,6 +15,7 @@ public class ItemController : MonoBehaviour
         //here we will run thru it and check to make sure we don't have the power already
         if (item.CompareTag("interEssence"))
         {
+            //change this to detect current array element selected to be whatever power
             if (Globals.currentEssence == "Ciara" && !Globals.hasRawEssence)
             {
                 item.SetActive(true);

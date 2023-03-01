@@ -2,7 +2,7 @@ INCLUDE globals.ink
 {Ciara_completed == true: -> helloagain}
 //play after getting to the end of fantasy (no longer accessible)
 
-Hello. #speaker:Ciara #portrait:default #layout:right
+Hello. #speaker:Ciara #portrait:default #player_portrait:noxie_thinking #layout:right
 Hey, nice to meet ya! #speaker:Noxie #layout:left
 Could you share your essence with me?
 Um... that's a bit forward. #speaker:Ciara #layout:right
