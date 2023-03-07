@@ -16,6 +16,7 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialogueController;
+    [SerializeField] private GameObject continueIcon; 
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI speakerText;
     [SerializeField] private Animator portraitAnimator;
@@ -28,6 +29,8 @@ public class DialogueManager : MonoBehaviour
 
     private Story currentStory;
     public bool dialogueIsPlaying {get; private set;} //read-only to outside scripts
+    private Coroutine displayLineCoroutine;
+    private bool canContinueToNextLine = true;
     private static DialogueManager instance;
 
     private const string SPEAKER_TAG = "speaker";
@@ -35,6 +38,7 @@ public class DialogueManager : MonoBehaviour
     private const string PLAYER_PORTRAIT_TAG = "player portrait";
     private const string LAYOUT_TAG = "layout";
     private DialogueVariables dialogueVariables;
+    private bool skip;
 
     private void Awake()
     {
@@ -56,6 +60,7 @@ public class DialogueManager : MonoBehaviour
         layoutAnimator = dialogueController.GetComponent<Animator>();
         dialogueIsPlaying = false;
         dialogueController.SetActive(false);
+        skip = false;
 
         //get all choices text
         choicesText = new TextMeshProUGUI[choices.Length];
@@ -69,21 +74,29 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetButtonDown("Interact"))
+        {
+            skip = true;
+        }
+
         if(!dialogueIsPlaying)
         {
             return;
         }
         
         // handle continuing to the next line in the dialogue when submit is pressed
-        if ( currentStory.currentChoices.Count == 0 && Input.GetButtonDown("Interact"))
+        if (canContinueToNextLine 
+            && currentStory.currentChoices.Count == 0 
+            && Input.GetButtonDown("Interact"))
         {
-            ContinueStory();        
+            ContinueStory();  
         }
     
-        //player can cancel dialogue at any time with "x"
+        //player can cancel dialogue at any time with "x" <- idk if we wanna keep this but for testing idc
         if (dialogueIsPlaying && Input.GetButtonDown("Cancel"))
         {
             StartCoroutine(ExitDialogueMode());
+            skip = false;
         }
     }
 
@@ -95,9 +108,12 @@ public class DialogueManager : MonoBehaviour
         speakerText.text = "???";
         portraitAnimator.Play("default");
         portraitAnimatorPlayer.Play("default");
-        layoutAnimator.Play("right");
-        dialogueVariables.StartListening(currentStory);
+        //commented out the layout part bc it always fucks the first line of dialogue
+        //layoutAnimator.Play("none");
 
+        dialogueVariables.StartListening(currentStory);
+        //update ink variable after swapping powers
+        currentStory.variablesState["power_name"] = Globals.currentPower;
     }
 
     private IEnumerator ExitDialogueMode()
@@ -110,18 +126,71 @@ public class DialogueManager : MonoBehaviour
         dialogueVariables.StopListening(currentStory);
     }
 
-    private void ContinueStory()
+    public void ContinueStory() //note: made public bc the essence needs to call this manually bc of its hierarchy shit
     {
         if (currentStory.canContinue)
         {
-            dialogueText.text = currentStory.Continue();
-            //display choices if any
-            DisplayChoices();
+            if (displayLineCoroutine != null)
+            {
+                StopCoroutine(displayLineCoroutine);
+            }
+            displayLineCoroutine = StartCoroutine(DisplayLine(currentStory.Continue()));
             HandleTags(currentStory.currentTags);
         }
         else
         {
             StartCoroutine(ExitDialogueMode());
+        }
+    }
+
+    private IEnumerator DisplayLine(string line)
+    {
+        dialogueText.text = ""; 
+        continueIcon.SetActive(false);
+        HideChoices();
+        canContinueToNextLine = false;
+        skip = false;
+
+        bool isAddingRichTextTag = false;
+
+        foreach (char letter in line.ToCharArray())
+        {          
+            //if interact is pressed, finish up the line
+            if (skip)
+            {
+                dialogueText.text = line;
+                break;
+            }
+
+            if (letter == '<' || isAddingRichTextTag)
+            {
+                isAddingRichTextTag = true;
+                dialogueText.text += letter;
+                if (letter == '>')
+                {
+                    isAddingRichTextTag = false;
+                }
+            }
+            else
+            {
+                //pull variables from ink into unity as story continues
+                Globals.VarCheck(); 
+                dialogueText.text += letter;
+                yield return new WaitForSeconds(Globals.typingSpeed);
+            }        
+        }
+        canContinueToNextLine = true;
+        //display choices if any
+        DisplayChoices();
+        continueIcon.SetActive(true);
+        skip = false;
+    }
+
+    private void HideChoices()
+    {
+        foreach (GameObject choiceButton in choices)
+        {
+            choiceButton.SetActive(false);
         }
     }
 
@@ -151,7 +220,6 @@ public class DialogueManager : MonoBehaviour
                     portraitAnimatorPlayer.Play(tagValue);
                     break;
                 case LAYOUT_TAG:
-                    Debug.Log(tag);
                     layoutAnimator.Play(tagValue);
                     break;
                 default:
@@ -199,14 +267,10 @@ public class DialogueManager : MonoBehaviour
 
     public void MakeChoice(int choiceIndex)
     {   
-        currentStory.ChooseChoiceIndex(choiceIndex);
-    }
-
-    public void GiveEssence()
-    {
-        //if give essence variable in ink file == true
-        //set visible/active their corresponding essence
-        //(seralize related essence to demon)
+        if (canContinueToNextLine)
+        {
+            currentStory.ChooseChoiceIndex(choiceIndex);
+        }
     }
 
     //allows unity to access the variable from ink file (dictionary) and use it
@@ -219,5 +283,12 @@ public class DialogueManager : MonoBehaviour
             Debug.LogWarning("Ink Variable was found to be null: " + variableName);
         }
         return variableValue;
+    }
+
+    public void GiveEssence()
+    {
+        //if give essence variable in ink file == true
+        //set visible/active their corresponding essence
+        //(seralize related essence to demon) so we dont have to have another whole ass script for it
     }
 }

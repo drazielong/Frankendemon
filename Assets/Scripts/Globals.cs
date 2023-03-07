@@ -7,10 +7,12 @@ public class Globals
 {
     public static bool hasRawEssence;
     public static string currentEssence;
-    public static string currentPower; //prob a unity variable tbh but is also used in dialogue so.??
-    public static string[] powerList; //list of powers you've collected. entry 0 will be your default look 
+    public static string currentPower; //prob a unity variable tbh but is also used in dialogue so.?? //use an int for ur current equip == position in array lol :)
+    public static string correctPower;
+    public static float typingSpeed;
+    public static List<string> powerList = new List<string>(); //list of powers you've collected. entry 0 will be your default look 
 
-    static public void EssenceCheck()
+    static public void VarCheck()
     {
         hasRawEssence = ((Ink.Runtime.BoolValue) DialogueManager
             .GetInstance()
@@ -23,15 +25,13 @@ public class Globals
         currentPower = ((Ink.Runtime.StringValue) DialogueManager
             .GetInstance()
             .GetVariableState("power_name")).value;
+
+        correctPower = ((Ink.Runtime.StringValue) DialogueManager
+            .GetInstance()
+            .GetVariableState("correct_power")).value;
+
+        typingSpeed = ((Ink.Runtime.FloatValue) DialogueManager
+            .GetInstance()
+            .GetVariableState("typing_speed")).value;
     }
-
-    //public static void PowerSwap()
-    //if current power is NOT in the array
-        //add to end of array
-    //else do nothing ig
-
-    //when you click the C key && not in dialogue
-        //change currentpower to next in array
-        //if array is at end, loop back to 0
-        //also change variable in ink?
 }

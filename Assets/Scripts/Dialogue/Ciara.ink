@@ -2,14 +2,14 @@ INCLUDE globals.ink
 {Ciara_completed == true: -> helloagain}
 //play after getting to the end of fantasy (no longer accessible)
 
-Hello. #speaker:Ciara #portrait:default #player_portrait:noxie_thinking #layout:right
+Hello. #speaker:Ciara #portrait:ciara_neutral #player portrait:noxie_thinking #layout:right
 Hey, nice to meet ya! #speaker:Noxie #layout:left
 Could you share your essence with me?
 Um... that's a bit forward. #speaker:Ciara #layout:right
 (Maybe I should try to get to know her first.) #speaker:Noxie #layout:left
 
 * [Ask about what she's doing.] -> ask
-* [Compliment her dress.] -> fantasy
+* [Compliment her dress.] -> fantasy //change to ask ab hobbies then when you talk to the librarian, this option will change to "talk about fantasy" or smth
 
 === ask ===
 I'm tending to the flock, clearly. #speaker:Ciara #layout:right
@@ -21,6 +21,20 @@ If you say so. #speaker:Ciara #layout:right
 
 -> END
 
+=== hobbies ===
+So... what do ya like to do for fun? #speaker:Noxie #layout:left
+I read. #speaker:Ciara #layout:right
+Oh! Cool, cool. #speaker:Noxie #layout:left
+... #speaker:Ciara #layout:right
+... #speaker:Noxie #layout:left
+...What kinda stuff do you read about?
+I doubt you would know. #speaker:Ciara #layout:right
+Are you done bothering me, now?
+(I guess I'll have to do a little research.) #speaker:Noxie #layout:left
+
+->END
+
+//go here if you have talked to the librarian
 === fantasy ===
 Cool dress! I like how the feathers stick out of it. It kinda reminds me of a witch dress! #speaker:Noxie #layout:left
 You've read about them at the library as well? #speaker:Ciara #layout:right
@@ -50,5 +64,5 @@ When your memories return, I expect to hear more about the human world.
 ->END
 
 === helloagain ===
-Have you checked out the library? #speaker:Ciara #layout:right
+Have you checked out the library? #speaker:Ciara #layout:right #portrait:ciara_neutral #player portrait:noxie_thinking
 ->END
