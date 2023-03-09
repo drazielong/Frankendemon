@@ -787,8 +787,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: da3522f7f6dd4c34b9ec3191b334b343, type: 2}
+  m_sharedMaterial: {fileID: 1584784530380906232, guid: da3522f7f6dd4c34b9ec3191b334b343, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2227,8 +2227,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 06c2f7ec91ce4f2429fe789e3e81103f, type: 2}
+  m_sharedMaterial: {fileID: -2434580513751945465, guid: 06c2f7ec91ce4f2429fe789e3e81103f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -22802,8 +22802,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: ???
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4192327e00ffa5542969eee9c47ee411, type: 2}
+  m_sharedMaterial: {fileID: 7212325116891563661, guid: 4192327e00ffa5542969eee9c47ee411, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -23554,8 +23554,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: da3522f7f6dd4c34b9ec3191b334b343, type: 2}
+  m_sharedMaterial: {fileID: 1584784530380906232, guid: da3522f7f6dd4c34b9ec3191b334b343, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -24320,7 +24320,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadGlobalsJSON: {fileID: 4900000, guid: 15722ba6b511c8046bc89f560942fa05, type: 3}
-  typingSpeed: 0.02
   dialogueController: {fileID: 2020346514}
   continueIcon: {fileID: 552837626}
   dialogueText: {fileID: 985290007}

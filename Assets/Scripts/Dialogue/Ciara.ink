@@ -2,22 +2,22 @@ INCLUDE globals.ink
 {Ciara_completed == true: -> helloagain}
 //play after getting to the end of fantasy (no longer accessible)
 
-Hello. #speaker:Ciara #portrait:ciara_neutral #player portrait:noxie_thinking #layout:right
+Hello. #speaker:Ciara #portrait:ciara_neutral #player portrait:noxie_neutral #layout:right
 Hey, nice to meet ya! #speaker:Noxie #layout:left
 Could you share your essence with me?
 Um... that's a bit forward. #speaker:Ciara #layout:right
-(Maybe I should try to get to know her first.) #speaker:Noxie #layout:left
+(Maybe I should try to get to know her first.) #speaker:Noxie #layout:left #player portrait:noxie_thinking
 
 * [Ask about what she's doing.] -> ask
 * [Compliment her dress.] -> fantasy //change to ask ab hobbies then when you talk to the librarian, this option will change to "talk about fantasy" or smth
 
 === ask ===
-I'm tending to the flock, clearly. #speaker:Ciara #layout:right
+I'm tending to the flock, clearly. #speaker:Ciara #layout:right 
 The birds here can't defend themselves properly, so that's why I have to protect them.
 In exchange, I can sell their eggs, I guess.
-That's cool! #speaker:Noxie #layout:left
+That's cool! #speaker:Noxie #layout:left #player portrait:noxie_neutral
 If you say so. #speaker:Ciara #layout:right
-(She doesn't seem to want to talk more about this.) #speaker:Noxie #layout:left
+(She doesn't seem to want to talk more about this.) #speaker:Noxie #layout:left #player portrait:noxie_thinking
 
 -> END
 
@@ -44,9 +44,9 @@ They write stories about having the power to fly, yet they have airplanes and te
 Maybe one day I'll make a trip to the Temperamental Domain and make a contract with one. I would love to meet them.
 Actually... I was once a human! #speaker:Noxie #layout:left
 Really? Then could you tell me? What makes you want to escape into fantasy? #speaker:Ciara #layout:right
-I uh... I dunno how to answer that. #speaker:Noxie #layout:left
+I uh... I dunno how to answer that. #speaker:Noxie #layout:left #player portrait:noxie_thinking
 I don't really have any memories of my life as a human... but I kinda have some vague feelings about it.
-To me, stories are just something fun and different to do, ya know?
+To me, stories are just something fun and different to do, ya know? #player portrait:noxie_neutral
 ...#speaker:Ciara #layout:right
 I suppose you're right. I do the same thing as I engross myself in these stories myself.
 I feel like there is more behind a creator's intentions, though. 
