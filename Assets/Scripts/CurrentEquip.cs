@@ -31,18 +31,17 @@ public class CurrentEquip : MonoBehaviour
         {
             UIText.text = "Holding Essence: " + Globals.hasRawEssence;
         }
-
+        else if (!this.CompareTag("essenceText"))
+        {
+            UIText.text = "Current Power: " + Globals.currentPower;
+        }
+        
         //when you press C not in dialogue, switch to the next item in powers list
         if (Input.GetButtonDown("Menu") && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
             AddPower();
             powers = Globals.powerList.ToArray(); //update array with list info
             SwapPower();
-            
-            if (!this.CompareTag("essenceText"))
-            {
-                UIText.text = "Current Power: " + Globals.currentPower;
-            }
         }
     }
 

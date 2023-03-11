@@ -24,6 +24,8 @@ public class DialogueTrigger : MonoBehaviour
 
             if (Input.GetButtonDown("Interact"))
             {
+                //prob dont need this 
+                //Globals.VarCheck(); //update vars again ^_^
                 visualCue.SetActive(false); 
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
                 
@@ -32,15 +34,24 @@ public class DialogueTrigger : MonoBehaviour
                     DialogueManager.GetInstance().ContinueStory();
                     gameObject.SetActive(false);
                 }
-                if (this.CompareTag("interRoadblock") && Globals.currentPower == Globals.correctPower)
+                if(this.CompareTag("interRoadblock"))
                 {
-                    gameObject.SetActive(false);
+                    DialogueManager.GetInstance().ContinueStory();
                 }
             }
         }
         else 
         {
             visualCue.SetActive(false);
+        }
+
+        //TODO: roadblock dialogue is kind of buggy -- idk why the overlay moves away ? its only on this.... 
+        if(DialogueManager.GetInstance().dialogueIsPlaying && this.inkJSON.name == "Roadblock") //LETS GOOOOOOO
+        {
+            if (Globals.currentPower == Globals.correctPower) 
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 

@@ -15,7 +15,7 @@ Is absolutely.
 Already able to speak?! You're already faring better than my previous attempts! 
 Let us skip ahead to the cognitive tests. Can you count to five for me? How many fingers am I holding up?
 One, two, three, four, five? #speaker:Noxie #layout:left
-~ typing_speed = 0.04
+~ typing_speed = 0.04 
 Uh, three fingers...
 ~ typing_speed = 0.02
 Wait 
@@ -32,16 +32,6 @@ Wait, I DIED??? #speaker:Noxie #layout:left #player portrait:noxie_angry
 Like, all the way? #player portrait:noxie_confused
 Well, sure. How else would I have gotten your soul? By extracting it directly? That’s ridiculous. #speaker:Mortis #layout:right
 Uh, that doesn’t sound any more crazy than anything else you just told me… #speaker:Noxie #layout:left #player portrait:noxie_sigh
-Does that mean this is Hell? Are you the Devil? Wait… am I being punished?! #player portrait:noxie_thinking
-Calm down, I am no such thing. #speaker:Mortis #layout:right
-I know nothing of your human life, you were simply one of the thousands of souls that pass through here in the Decay domain and plucked from the chain of the rebirth cycle.
-And this is not the Hell you might be imagining, in fact I think the denizens of this place are quite colorful characters!
-I think you will find them interesting once you go out and explore for yourself.
-In fact this is much less a punishment and more of a… second life, if you will. As long as nothing goes astronomically wrong with your new form!
-I wish I could remember what my life was like before I died so I could know how mad I should be right now... #speaker:Noxie #layout:left #player portrait:noxie_sigh
-Your memory loss is unsurprising. I was unsure how stable they would be traveling from your physical body to your formless soul. #speaker:Mortis #layout:right
-You may not even be able to recover them in full, if at all!
-Great... #speaker:Noxie #layout:left
 Bah, I say do not dwell on the past. You cannot change what you cannot change. #speaker:Mortis #layout:right
 All of the action is right here in the present, and our potential in our future!
 Moving on! 
@@ -57,9 +47,7 @@ Will that, like, hurt?
 
 Probably not! #speaker:Mortis #layout:right
 
-//Okay... Why should I be doing this for you anyway? Just cause you resurrected me doesn't mean I owe you anything.
-
-{has_rawEssence: |You'll find out once you find someone who will lend you their essence. Come back to me so I may study the results, please!}
+You'll find out once you find someone who will lend you their essence. Come back to me so I may study the results, please!
 ->END
 
 === essence ===
@@ -73,10 +61,11 @@ How did you do that???#speaker:Noxie #portrait:mortis_happy #player portrait:nox
 As much as I would love to get into the details, I shall simplify it for you.#speaker:Mortis  #layout:right
 Very very verrry simply, I took that essence and infused it with the preserved limbs of a recently deceased. 
 And now you should be able to detach those arms and equip these ones and use their power!
-All thanks to my genius.
 ~ has_rawEssence = false
 ~ power_name = "Ciara"
 ~ essence_name = ""
+~ Mortis_completed = true
+All thanks to my genius.
 ->END
 
 === helloagain ===
