@@ -1,3 +1,4 @@
+INCLUDE globals.ink
 Hello... #speaker:Dearil #portrait:default #player portrait:noxie_neutral #layout:right
 I'm Mortis' assistant.
 She might make me help you out...

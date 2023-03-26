@@ -1,12 +1,11 @@
 INCLUDE globals.ink
-{Mortis_completed == true: -> helloagain}
-//if u have raw essence skip to the essence "cutscene"
+{mortis_completed == true: -> helloagain}
 {has_rawEssence: -> essence}
+{mortis_met == true: -> instructions}
 Hi! Hello! Salutations! #speaker:Mortis #portrait:mortis_happy #layout:right #player portrait:noxie_neutral
 I see that you've already started walking, so why don't we hurry along with the readjustment period? #layout:right
 How are those relatively new limbs treating you?
 ...Where am I? What happened to me? #speaker:Noxie #layout:left #player portrait:noxie_confused
-I can't remember anything...
 Oh my. #speaker:Mortis #layout:right
 Oh my my my
 This. 
@@ -26,28 +25,54 @@ You're talking back, thinking for yourself, asking QUESTIONS!
 I believe I may have finally done it! 
 DONE WHAT??? #speaker:Noxie #layout:left #player portrait:noxie_angry
 Necromancy, my friend! #speaker:Mortis #layout:right
-But not just any necromancy, no no no we are not so simple here. Trans-species necromancy!
+But not just any necromancy, no no no we are not so simple here. <i>Trans-species</i> necromancy!
 I caught your faint little human soul and reengineered it for a demon's body. Of course, this body is made up of multiple different long passed demons, not a single uniform body-
 Wait, I DIED??? #speaker:Noxie #layout:left #player portrait:noxie_angry
 Like, all the way? #player portrait:noxie_confused
 Well, sure. How else would I have gotten your soul? By extracting it directly? That’s ridiculous. #speaker:Mortis #layout:right
-Uh, that doesn’t sound any more crazy than anything else you just told me… #speaker:Noxie #layout:left #player portrait:noxie_sigh
-Bah, I say do not dwell on the past. You cannot change what you cannot change. #speaker:Mortis #layout:right
-All of the action is right here in the present, and our potential in our future!
-Moving on! 
-Now that we have established that the transfer was successful, there is something peculiar about this world that I want to explore with you.
+My soul..? #speaker:Noxie #layout:left #player portrait:noxie_confused
+//Uh, that doesn’t sound any more crazy than anything else you just told me… #speaker:Noxie #layout:left #player portrait:noxie_sigh
+//Bah, I say do not dwell on the past. You cannot change what you cannot change. #speaker:Mortis #layout:right
+//All of the action is right here in the present, and our potential in our future!
+
+Moving on! #speaker:Mortis #layout:right
 I need you to collect something called essences. They are a piece of a demon's soul that in part forms their identity.
 I've observed that demons are able to exchange their essences with each other at their leisure.
 These essences are malleable and change as they're passed from person to person, like they are adapting to the new host in a way.
-Typically a human soul should not be able to infuse a demon's essence, but you are special!
-Not only because your soul has already been fused with a demon's body, but because your body is malleable as well.
+I've been researching them for a while, but not with a person of... your unique circumstances.
+//Typically a human soul should not be able to infuse a demon's essence, but you are special!
+//Not only because your soul has already been fused with a demon's body, but because your body is malleable as well.
 
-Uh, okay...? #speaker:Noxie #layout:left #player portrait:noxie_confused
-Will that, like, hurt?
+So I'm not human anymore... #speaker:Noxie #layout:left #player portrait:noxie_confused
+I should hate you #player portrait:noxie_angry
+But... actually... #player portrait:noxie_thinking
+I feel better than I ever did before! #player portrait:noxie_laugh
 
-Probably not! #speaker:Mortis #layout:right
+Fantastic! #speaker:Mortis #layout:right
+All the better to help with my research, correct?
 
-You'll find out once you find someone who will lend you their essence. Come back to me so I may study the results, please!
+Your research? #speaker:Noxie #layout:left #player portrait:noxie_confused
+HA! #player portrait:noxie_laugh
+I'm a brand new person #player portrait:noxie_thinking
+A new FREE person #player portrait:noxie_neutral
+I don't have to do what you tell me. 
+Just cuz you revived me doesn't mean I owe you anything, you weird bird scientist.
+I'm gonna go out on my own for the very first time again!!!
+
+Oh dear. #speaker:Mortis #layout:right #player portrait:invis
+It seems my experiment has run off.
+Dearil!
+Y-yes? #speaker:Dearil #layout:left
+Go after them. #speaker:Mortis #layout:right
+Just keep an eye on them, but if you could convince them to come back...
+That would be just lovely!
+Of course... #speaker:Dearil #layout:left
+~ mortis_met = true
+->END
+
+=== instructions ===
+//Er... what was I supposed to do again? #speaker:Noxie #portrait:mortis_happy #layout:left #player portrait:noxie_confused
+If you ever change your mind, I will be waiting for you to return with an essence! #speaker:Mortis #portrait:mortis_happy #layout:right #player portrait:noxie_neutral
 ->END
 
 === essence ===
@@ -64,11 +89,11 @@ And now you should be able to detach those arms and equip these ones and use the
 ~ has_rawEssence = false
 ~ power_name = "Ciara"
 ~ essence_name = ""
-~ Mortis_completed = true
+~ mortis_completed = true
 All thanks to my genius.
 ->END
 
 === helloagain ===
-Bring back essences and I'll make you more powers! #speaker:Mortis #portrait:mortis_happy #layout:right #player portrait:noxie_thinking
-
+Bring back essences and I'll make you more powers! #speaker:Mortis #portrait:mortis_happy #layout:right #player portrait:noxie_neutral
+(And I'll continue my research)
 ->END

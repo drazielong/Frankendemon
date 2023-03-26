@@ -180,14 +180,11 @@ AnimatorStateMachine:
     m_State: {fileID: -7105698095270443738}
     m_Position: {x: 445, y: 445, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 7088381417754011916}
-    m_Position: {x: 480, y: 510, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: -1085191835574369191}
-    m_Position: {x: 515, y: 575, z: 0}
+    m_Position: {x: 480, y: 520, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8944054282476546223}
-    m_Position: {x: 550, y: 640, z: 0}
+    m_Position: {x: 510, y: 580, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -219,32 +216,6 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 9284c1c4c51ad7d409a40b91d67565f1, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &7088381417754011916
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: noxie_neutral 1
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 893288b864a9e0043b3c4838d6a38841, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

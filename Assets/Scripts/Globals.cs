@@ -6,6 +6,7 @@ using UnityEngine;
 public class Globals
 {
     public static bool hasRawEssence;
+    public static bool essenceActivate;
     public static string currentEssence;
     public static string currentPower; //prob a unity variable tbh but is also used in dialogue so.?? //use an int for ur current equip == position in array lol :)
     public static string correctPower;
@@ -17,6 +18,10 @@ public class Globals
         hasRawEssence = ((Ink.Runtime.BoolValue) DialogueManager
             .GetInstance()
             .GetVariableState("has_rawEssence")).value;
+        
+        essenceActivate = ((Ink.Runtime.BoolValue) DialogueManager
+            .GetInstance()
+            .GetVariableState("essence_activate")).value;
 
         currentEssence = ((Ink.Runtime.StringValue) DialogueManager
             .GetInstance()
@@ -25,10 +30,6 @@ public class Globals
         currentPower = ((Ink.Runtime.StringValue) DialogueManager
             .GetInstance()
             .GetVariableState("power_name")).value;
-
-        correctPower = ((Ink.Runtime.StringValue) DialogueManager
-            .GetInstance()
-            .GetVariableState("correct_power")).value;
 
         typingSpeed = ((Ink.Runtime.FloatValue) DialogueManager
             .GetInstance()

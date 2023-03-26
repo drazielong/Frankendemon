@@ -4,63 +4,63 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
-    [Header("Item")]
-    [SerializeField] private GameObject item;
+    [Header("Visual Cue")]
+    [SerializeField] private GameObject visualCue;
+
+    [Header("Ink JSON")]
+    [SerializeField] private TextAsset inkJSON;
+
+    [Header("Correct Power")]
+    [SerializeField] private string correctPower;
+    private bool playerInRange;
+    private void Awake()
+    {
+        visualCue.SetActive(false);
+    }
     private void Update()
     {
-        //prob fine if i dont run the check bc its running in currentequip
-        //essence show or hide (hide is default)
-        //note: detecting if you're holding a raw essence shouldn't be a factor
-        //instead we're gonna make an array or something listing all of your collected powers
-        //here we will run thru it and check to make sure we don't have the power already
-        if (item.CompareTag("interEssence"))
+        if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
-            //change this to detect current array element selected to be whatever power
-            if (Globals.currentEssence == "Ciara" && !Globals.hasRawEssence)
+            visualCue.SetActive(true);
+
+            if (Input.GetButtonDown("Interact"))
             {
-                item.SetActive(true);
+                visualCue.SetActive(false); 
+                DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+
+                if(this.CompareTag("interEssence"))
+                {
+                    DialogueManager.GetInstance().ContinueStory();
+                    gameObject.SetActive(false);
+                }
+                
+                //we keep the ink variable for ink purposes, but for this we made another variable
+                //that holds the same info for unity purposes :)
+                if(this.CompareTag("interRoadblock") && Globals.currentPower == correctPower) 
+                {
+                    gameObject.SetActive(false);
+                }
             }
-            else 
-            {
-                item.SetActive(false);
-            }
         }
-
-        //FOR MULTI ESSENCES:
-        //serializefield private string correctEssence
-            //manually input which essence its related to
-            //use in place of current essence held bc its specific to ciara
-        //serializefield private string collectedPower
-            //specific to each essence, input the name of the power its related to
-            //this name will be in an array of collected powers
-        //serializefield private string correctPower
-            //manually input which power clears the roadblock in unity per roadblock
-            //use in place of ciara since its specific to ciara
-
-
-        //switch statement to show colors based on name (ex: ciara = orange essence)
-        //shown in the variable observer video 
-        /*
-        switch (rawEssenceName)
+        else 
         {
-            case "":         
-                essence.SetActive(false);
-                break;
-            case "Ciara":
-                //set to orange
-                essence.SetActive(true);
-                break;
-            default:
-                Debug.LogWarning("not handled by switch statement:" + rawEssenceName);
-                break;
-        }
+            visualCue.SetActive(false);
+        } 
+    }
 
-        
-        if (Input.GetButtonDown("Interact") && this.CompareTag("interItem"))
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
         {
-            gameObject.SetActive(false);
-            //add to inventory
+            playerInRange = true;
         }
-        */
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
     }
 }
