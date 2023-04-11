@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Reset"))
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         //Quit button for now -- turn into menu later
         if (Input.GetButtonDown("Quit"))
