@@ -10,7 +10,7 @@ public class Menus: MonoBehaviour
 {   
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     //sigh okay so... how about when ur in a menu or something and u click the mouse we just auto reset the thing??? 
