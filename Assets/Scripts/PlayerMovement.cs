@@ -22,6 +22,9 @@ public class PlayerMovement : MonoBehaviour
     //enum is making our own data type that holds whatever is in the curly braces
     private enum MovementState { idle, run, jump, fall }
 
+    public static bool isPaused;
+    public GameObject pauseMenu;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -32,17 +35,28 @@ public class PlayerMovement : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     private void Update()
     {
         if (Input.GetButtonDown("Reset"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        //Quit button for now -- turn into menu later
+        
         if (Input.GetButtonDown("Quit"))
         {
             Application.Quit();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(isPaused)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
         }
         
         //stop movement if ur in dialogue
@@ -64,7 +78,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //animation checks
-        UpdateAnimation();
+        if (!isPaused)
+        {
+            UpdateAnimation();
+        }
     }
 
     private void UpdateAnimation() 
@@ -105,5 +122,19 @@ public class PlayerMovement : MonoBehaviour
     {
         //I really need to get the unity extension so i can see the parameters for unity shit
         return Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0f, Vector2.down, .1f, jumpableGround); 
+    }
+
+    public void PauseGame()
+    {
+        isPaused = true;
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
     }
 }

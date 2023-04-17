@@ -1,4 +1,5 @@
 //https://www.youtube.com/watch?v=NRUk7YzXyhE
+//https://www.youtube.com/watch?v=YOaYQrN1oYQ
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,15 +14,16 @@ public class Menus: MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
     }
 
-    //sigh okay so... how about when ur in a menu or something and u click the mouse we just auto reset the thing??? 
-    //only work around i can think of is to do a lil trick like this ....
-    //update
-    //if no button is currently selected
-        //select the top option again
-
     public void LoadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+        PlayerMovement.isPaused = false;
+        Time.timeScale = 1f;
     }
 
     public void Quit()
@@ -34,10 +36,20 @@ public class Menus: MonoBehaviour
         Screen.fullScreen = isFullscreen;
     }
 
-    public void setResolution ()
+    public void SetResolution (int val)
     {
-        //either read the text and extract value from there or
-        //use "option x = y resolution" and so forth ?
-        //Screen.SetResolution(x, y, isFullscreen);
+        if (val == 0)
+        {
+            Screen.SetResolution(1920, 1080, Screen.fullScreen);
+            Debug.Log("0 " + Screen.width + Screen.height);
+        }
+        if (val == 1)
+        {
+            Screen.SetResolution(1600, 900, Screen.fullScreen);
+        }
+        if (val == 2)
+        {
+            Screen.SetResolution(1600, 900, Screen.fullScreen);
+        }
     }
 }
