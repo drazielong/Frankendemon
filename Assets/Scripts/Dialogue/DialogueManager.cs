@@ -21,6 +21,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI speakerText;
     [SerializeField] private Animator portraitAnimator;
     [SerializeField] private Animator portraitAnimatorPlayer;
+    [SerializeField] private Animator portraitAnimatorCompanion;
     private Animator layoutAnimator;
     
     [Header("Choices UI")]
@@ -36,6 +37,7 @@ public class DialogueManager : MonoBehaviour
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
     private const string PLAYER_PORTRAIT_TAG = "player portrait";
+    private const string COMPANION_PORTRAIT_TAG = "companion portrait";
     private const string LAYOUT_TAG = "layout";
     private DialogueVariables dialogueVariables;
     private bool skip;
@@ -108,6 +110,7 @@ public class DialogueManager : MonoBehaviour
         speakerText.text = "???";
         portraitAnimator.Play("default");
         portraitAnimatorPlayer.Play("default");
+        portraitAnimatorCompanion.Play("invis");
         //commented out the layout part bc it always fucks the first line of dialogue
         //layoutAnimator.Play("none");
 
@@ -218,6 +221,9 @@ public class DialogueManager : MonoBehaviour
                     break;
                 case PLAYER_PORTRAIT_TAG:
                     portraitAnimatorPlayer.Play(tagValue);
+                    break;
+                case COMPANION_PORTRAIT_TAG:
+                    portraitAnimatorCompanion.Play(tagValue);
                     break;
                 case LAYOUT_TAG:
                     layoutAnimator.Play(tagValue);

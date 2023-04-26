@@ -2,11 +2,12 @@ INCLUDE globals.ink
 {mortis_completed == true: -> helloagain}
 {has_rawEssence: -> essence}
 {mortis_met == true: -> instructions}
-Hi! Hello! Salutations! #speaker:Mortis #portrait:mortis_happy #layout:right #player portrait:noxie_neutral
+Hi! Hello! Salutations! #speaker:Mortis #portrait:mortis_happy #layout:right #player portrait:noxie_neutral #companion portrait:invis
 I see that you've already started walking, so why don't we hurry along with the readjustment period? #layout:right
 How are those relatively new limbs treating you?
 ...Where am I? What happened to me? #speaker:Noxie #layout:left #player portrait:noxie_confused
-Oh my. #speaker:Mortis #layout:right
+You are in the demon world. #speaker:Dearil #layout:subleft #companion portrait:dearil_neutral
+Oh my. #speaker:Mortis #layout:right #companion portrait:invis
 Oh my my my
 This. 
 Is absolutely. 
