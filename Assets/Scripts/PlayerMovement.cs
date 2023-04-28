@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if(isPaused)
             {
+                DialogueManager.StartCoroutine(SelectFirstChoice()); //trying to select the first choice when opening pause menu as the default gets changed in dialogue
                 ResumeGame();
             }
             else
