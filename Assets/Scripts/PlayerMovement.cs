@@ -4,6 +4,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     public static bool isPaused;
     public GameObject pauseMenu;
+    public GameObject pauseResolution;
 
     // Start is called before the first frame update
     private void Start()
@@ -47,11 +49,10 @@ public class PlayerMovement : MonoBehaviour
             Application.Quit();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
             if(isPaused)
             {
-                DialogueManager.StartCoroutine(SelectFirstChoice()); //trying to select the first choice when opening pause menu as the default gets changed in dialogue
                 ResumeGame();
             }
             else
@@ -60,8 +61,8 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         
-        //stop movement if ur in dialogue
-        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        //stop movement if ur in dialogue OR paused
+        if (DialogueManager.GetInstance().dialogueIsPlaying || isPaused)
         {
             rb.velocity = new Vector2 (0 * moveSpeed, rb.velocity.y);
             anim.SetInteger("state", (int)MovementState.idle);
@@ -79,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //animation checks
-        if (!isPaused)
+        if (Time.timeScale == 1f)
         {
             UpdateAnimation();
         }
@@ -130,6 +131,8 @@ public class PlayerMovement : MonoBehaviour
         isPaused = true;
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
+        //select "resolution" obj from the pause menu as "first selected" in event sys
+        EventSystem.current.SetSelectedGameObject(pauseResolution);
     }
 
     public void ResumeGame()

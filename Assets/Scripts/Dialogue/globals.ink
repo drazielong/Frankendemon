@@ -5,6 +5,7 @@ VAR has_rawEssence = false //has raw essence bool
 VAR power_name = "Noxie" //current power equipped
 VAR correct_power = "" //correct power
 VAR typing_speed = 0.02 
+VAR cutscene = false 
 
 //Mortis
 VAR mortis_completed = false

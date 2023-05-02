@@ -263,7 +263,7 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(SelectFirstChoice());
     }
     // i believe this is to have the player automatically select the first choice if they were to click the interact button
-    private IEnumerator SelectFirstChoice()
+    public IEnumerator SelectFirstChoice()
     {
         //event system requires we clear it first, then wait for at least one frame before we set current select obj
         EventSystem.current.SetSelectedGameObject(null);

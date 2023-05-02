@@ -11,6 +11,7 @@ public class Globals
     public static string currentPower; //prob a unity variable tbh but is also used in dialogue so.?? //use an int for ur current equip == position in array lol :)
     public static string correctPower;
     public static float typingSpeed;
+    public static bool cutscene;
     public static List<string> powerList = new List<string>(); //list of powers you've collected. entry 0 will be your default look 
 
     static public void VarCheck()
@@ -34,5 +35,9 @@ public class Globals
         typingSpeed = ((Ink.Runtime.FloatValue) DialogueManager
             .GetInstance()
             .GetVariableState("typing_speed")).value;
+        
+        cutscene = ((Ink.Runtime.BoolValue) DialogueManager
+            .GetInstance()
+            .GetVariableState("cutscene")).value;
     }
 }
