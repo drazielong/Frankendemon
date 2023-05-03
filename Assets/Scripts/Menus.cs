@@ -13,12 +13,6 @@ public class Menus: MonoBehaviour
     {
         //Cursor.lockState = CursorLockMode.Locked;
     }
-
-    public void LoadLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
     public void MainMenu()
     {
         SceneManager.LoadScene(0);

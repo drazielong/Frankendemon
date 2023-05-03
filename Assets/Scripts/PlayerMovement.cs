@@ -61,8 +61,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         
-        //stop movement if ur in dialogue OR paused
-        if (DialogueManager.GetInstance().dialogueIsPlaying || isPaused)
+        //stop movement if ur in dialogue OR paused OR cutscene is playing
+            //note: when cutscene is playing you shouldnt be able to pause either? (move above pause?)
+            //moving this above pause might override the esc. key though -- then ig we could just add a button to return to game
+            //instead of using esc again
+        if (DialogueManager.GetInstance().dialogueIsPlaying || isPaused || CutsceneController.cutsceneIsPlaying == true)
         {
             rb.velocity = new Vector2 (0 * moveSpeed, rb.velocity.y);
             anim.SetInteger("state", (int)MovementState.idle);
@@ -80,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //animation checks
-        if (Time.timeScale == 1f)
+        if (!isPaused)
         {
             UpdateAnimation();
         }
