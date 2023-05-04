@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        //testing buttons
         if (Input.GetButtonDown("Reset"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -49,27 +50,17 @@ public class PlayerMovement : MonoBehaviour
             Application.Quit();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && !DialogueManager.GetInstance().dialogueIsPlaying)
-        {
-            if(isPaused)
-            {
-                ResumeGame();
-            }
-            else
-            {
-                PauseGame();
-            }
-        }
-        
         //stop movement if ur in dialogue OR paused OR cutscene is playing
-            //note: when cutscene is playing you shouldnt be able to pause either? (move above pause?)
-            //moving this above pause might override the esc. key though -- then ig we could just add a button to return to game
-            //instead of using esc again
         if (DialogueManager.GetInstance().dialogueIsPlaying || isPaused || CutsceneController.cutsceneIsPlaying == true)
         {
             rb.velocity = new Vector2 (0 * moveSpeed, rb.velocity.y);
             anim.SetInteger("state", (int)MovementState.idle);
             return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && !DialogueManager.GetInstance().dialogueIsPlaying)
+        { 
+            PauseGame();
         }
 
         dirX = Input.GetAxisRaw("Horizontal"); //the raw part instantly drops velocity to 0 
@@ -131,13 +122,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void PauseGame()
     {
-        isPaused = true;
-        Time.timeScale = 0f;
-        pauseMenu.SetActive(true);
         //select "resolution" obj from the pause menu as "first selected" in event sys
         EventSystem.current.SetSelectedGameObject(pauseResolution);
+        isPaused = true;
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(true);   
     }
 
+    //moved to menus
     public void ResumeGame()
     {
         isPaused = false;

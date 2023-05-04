@@ -20,6 +20,13 @@ public class Menus: MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    public void ResumeGame()
+    {
+        PlayerMovement.isPaused = false;
+        Time.timeScale = 1f;
+        gameObject.SetActive(false);
+    }
+
     public void Quit()
     {
         Application.Quit();

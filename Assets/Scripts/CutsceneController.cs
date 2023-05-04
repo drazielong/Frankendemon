@@ -4,17 +4,16 @@ using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
 
-//fade to black tutorial
-//https://turbofuture.com/graphic-design-video/How-to-Fade-to-Black-in-Unity
-
 public class CutsceneController : MonoBehaviour
 {
     [SerializeField] private VideoPlayer videoPlayer;
+    [SerializeField] private GameObject canvasUI;
     [SerializeField] private Animator transition;
     [SerializeField] private  float transitionTime = 1f;
     private bool playerInRange;
     public static bool cutsceneIsPlaying;
     private bool endReached;
+    private bool endingCutscene = false;
     private void Start()
     {
         videoPlayer.playOnAwake = false;
@@ -29,7 +28,8 @@ public class CutsceneController : MonoBehaviour
         {
             StartCoroutine(PlayCutscene());
         }
-        if (endReached)
+        
+        if (endReached && !endingCutscene)
         {
             StartCoroutine(EndCutscene());
         }
@@ -37,30 +37,34 @@ public class CutsceneController : MonoBehaviour
 
     private IEnumerator PlayCutscene()
     {
+        canvasUI.SetActive(false);
         cutsceneIsPlaying = true;
 
         transition.Play("Crossfade_Start");
         yield return new WaitForSeconds(transitionTime);
 
-        //load if need be?
         videoPlayer.Play();
-        videoPlayer.loopPointReached += EndReached;
 
         transition.Play("Crossfade_End");
         yield return new WaitForSeconds(transitionTime);
+
+        videoPlayer.loopPointReached += EndReached; //detect end of vid
     }
 
     private IEnumerator EndCutscene()
     {
+        endingCutscene = true; //this is so we dont have this ienum constantly rerunning while endReached=true
+
         transition.Play("Crossfade_Start");
         yield return new WaitForSeconds(transitionTime);
-        transition.Play("Crossfade_End");
         
-        Debug.Log("Destroying video");
+        transition.Play("Crossfade_End");
+        Debug.Log("Destroying video"); //so we dont see it as we fade back out
         Destroy(videoPlayer);
-        Debug.Log("cutscene is playinjg = false, inrange false");
-        cutsceneIsPlaying = false;
-        playerInRange = false;
+        yield return new WaitForSeconds(transitionTime);
+        
+        cutsceneIsPlaying = false; //finally we can regain movement
+        canvasUI.SetActive(true);
 
         Debug.Log("Destroying trigger");
         Destroy(gameObject);
@@ -69,7 +73,7 @@ public class CutsceneController : MonoBehaviour
     void EndReached(UnityEngine.Video.VideoPlayer vp) //end of vid thing
     {
         endReached = true;
-        Debug.Log("Done Playing Video" + endReached);
+        Debug.Log("Done Playing Video " + endReached);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
