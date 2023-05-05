@@ -129,7 +129,7 @@ public class DialogueManager : MonoBehaviour
         dialogueVariables.StopListening(currentStory);
     }
 
-    public void ContinueStory() //note: made public bc the essence needs to call this manually bc of its hierarchy shit
+    public void ContinueStory() //note: made public bc sometimes i need to call this manually bc of hierarchy shit
     {
         if (currentStory.canContinue)
         {
