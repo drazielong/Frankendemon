@@ -4,7 +4,7 @@ INCLUDE globals.ink
 -> blocked
 
 === blocked ===
-I need a specific power in order to get past this. #speaker:Noxie #portrait:invis #player portrait:noxie_neutral #layout:left
+These things are blocking the way. #speaker:Noxie #portrait:invis #player portrait:noxie_neutral #layout:left
 ->END
 
 === unblocked ===
