@@ -28,11 +28,13 @@ public class ItemController : MonoBehaviour
                 visualCue.SetActive(false); 
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
 
+                /*
                 if(this.CompareTag("interEssence"))
                 {
                     DialogueManager.GetInstance().ContinueStory();
                     gameObject.SetActive(false);
                 }
+                */
                 
                 //we keep the ink variable for ink purposes, but for this we made another variable
                 //that holds the same info for unity purposes :)

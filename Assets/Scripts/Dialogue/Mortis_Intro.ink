@@ -5,75 +5,86 @@ INCLUDE globals.ink
 Hi! Hello! Salutations! #speaker:Mortis #portrait:mortis_happy #layout:right #player portrait:noxie_neutral #companion portrait:invis
 I see that you've already started walking, so why don't we hurry along with the readjustment period? #layout:right
 How are those relatively new limbs treating you?
-...Where am I? What happened to me? #speaker:Noxie #layout:left #player portrait:noxie_confused
-You are in the demon world. #speaker:Dearil #layout:subleft #companion portrait:dearil_neutral
+...Where am I? What happened to me? #speaker:??? #layout:left #player portrait:noxie_confused
 Oh my. #speaker:Mortis #layout:right #companion portrait:invis
 Oh my my my
 This. 
 Is absolutely. 
 <color=\#71eb6b>WONDERFUL!!!
 Already able to speak?! You're already faring better than my previous attempts! 
-Let us skip ahead to the cognitive tests. Can you count to five for me? How many fingers am I holding up?
-One, two, three, four, five? #speaker:Noxie #layout:left
+Let us skip ahead to the cognitive tests, then! 
+Can you count to five for me? How many fingers am I holding up?
+One, two, three, four, five? #speaker:??? #layout:left
 ~ typing_speed = 0.04 
 Uh, three fingers...
 ~ typing_speed = 0.02
 Wait 
-Why am I doing this #player portrait:noxie_sigh
-Who even are you??? 
+Why am I doing this. #player portrait:noxie_sigh
+Who even are you.
 This is a major breakthrough! #speaker:Mortis #layout:right
 You're talking back, thinking for yourself, asking QUESTIONS!
 I believe I may have finally done it! 
-DONE WHAT??? #speaker:Noxie #layout:left #player portrait:noxie_angry
-Necromancy, my friend! #speaker:Mortis #layout:right
-But not just any necromancy, no no no we are not so simple here. <i>Trans-species</i> necromancy!
-I caught your faint little human soul and reengineered it for a demon's body. Of course, this body is made up of multiple different long passed demons, not a single uniform body-
-Wait, I DIED??? #speaker:Noxie #layout:left #player portrait:noxie_angry
+DONE WHAT?! #speaker:??? #layout:left #player portrait:noxie_angry
+Why, necromancy of course! #speaker:Mortis #layout:right
+But not just any necromancy, no no no we are not so simple here. 
+<i>Trans-species</i> necromancy!
+I caught your faint little human soul and reengineered it for a demon's body. 
+Obviously this body is made up of multiple different long passed demons, not a single uniform body because believe it or not it's hard to find one whole, put together, BODY in the DECAY domain of all places,
+Wait, I DIED??? #speaker:??? #layout:left #player portrait:noxie_angry
 Like, all the way? #player portrait:noxie_confused
-Well, sure. How else would I have gotten your soul? By extracting it directly? That’s ridiculous. #speaker:Mortis #layout:right
-My soul..? #speaker:Noxie #layout:left #player portrait:noxie_confused
-//Uh, that doesn’t sound any more crazy than anything else you just told me… #speaker:Noxie #layout:left #player portrait:noxie_sigh
+Well, sure. How else would I have gotten your soul? By extracting it directly? 
+That’s preposterous. #speaker:Mortis #layout:right
+??? #speaker:??? #layout:left #player portrait:noxie_confused
+//Uh, that doesn’t sound any more crazy than anything else you just told me… #speaker:??? #layout:left #player portrait:noxie_sigh
 //Bah, I say do not dwell on the past. You cannot change what you cannot change. #speaker:Mortis #layout:right
 //All of the action is right here in the present, and our potential in our future!
 
-Moving on! #speaker:Mortis #layout:right
-I need you to collect something called essences. They are a piece of a demon's soul that in part forms their identity.
-I've observed that demons are able to exchange their essences with each other at their leisure.
-These essences are malleable and change as they're passed from person to person, like they are adapting to the new host in a way.
-I've been researching them for a while, but not with a person of... your unique circumstances.
-//Typically a human soul should not be able to infuse a demon's essence, but you are special!
-//Not only because your soul has already been fused with a demon's body, but because your body is malleable as well.
-
-So I'm not human anymore... #speaker:Noxie #layout:left #player portrait:noxie_confused
+So basically I'm not human anymore...
 I should hate you #player portrait:noxie_angry
-But... actually... #player portrait:noxie_thinking
-I feel better than I ever did before! #player portrait:noxie_laugh
+But honestly #player portrait:noxie_thinking
+this new body is way stronger than my old one
+Way better, and
+more comfortable?
+...
+You. #player portrait:noxie_neutral
+Tell me how to get back to the human world.
 
-Fantastic! #speaker:Mortis #layout:right
-All the better to help with my research, correct?
+Why would you ever want to do that? #speaker:Mortis #layout:right
 
-Your research? #speaker:Noxie #layout:left #player portrait:noxie_confused
-HA! #player portrait:noxie_laugh
-I'm a brand new person #player portrait:noxie_thinking
-A new FREE person #player portrait:noxie_neutral
-I don't have to do what you tell me. 
-Just cuz you revived me doesn't mean I owe you anything, you weird bird scientist.
-I'm gonna go out on my own for the very first time again!!!
+I have some unfinished business I need to take care of. #speaker:??? #layout:left
 
-Oh dear. #speaker:Mortis #layout:right #player portrait:invis
-It seems my experiment has run off.
-Dearil!
-Y-yes? #speaker:Dearil #layout:left
-Go after them. #speaker:Mortis #layout:right
-Just keep an eye on them, but if you could convince them to come back...
-That would be just lovely!
-Of course... #speaker:Dearil #layout:left
+If you ask me, whatever's there should stay there. It's much nicer here. #speaker:Mortis #layout:right
+
+... (glare emote) #speaker:??? #layout:left
+
+Well, if you MUST insist... #speaker:mortis #layout:right
+I SUPPOSE I could aid you on this journey, but in exchange you must do something for me!
+IF you happen to encounter any demon essences along the way, bring them back to me.
+
+I don't even know what those things are. #speaker:??? #layout:left
+
+You will know it when you see it! #speaker:mortis #layout:right
+My assistant will accompany you.
+
+Hello, that's me... (sprite replaces mortis) #speaker:dearil
+
+I don't need a babysitter. Or to be a babysitter. Whatever. #speaker:??? #layout:left
+Just tell me the way to go.
+
+You see, Dearil is both my insurance AND your guide to this world. #speaker:mortis #layout:right
+I could point you in the right direction, but it will only get you so far.
+
+... #speaker:??? #layout:left
+Whatever. Which way.
+
+After you exit my tower, go right. You will find yourself on a road that takes you to the next domain. #speaker:Mortis #layout:right
+Farewell, and don't forget! Bring me essences!
 ~ mortis_met = true
 ->END
 
 === instructions ===
-//Er... what was I supposed to do again? #speaker:Noxie #portrait:mortis_happy #layout:left #player portrait:noxie_confused
-If you ever change your mind, I will be waiting for you to return with an essence! #speaker:Mortis #portrait:mortis_happy #layout:right #player portrait:noxie_neutral
+//Er... what was I supposed to do again? #speaker:??? #portrait:mortis_happy #layout:left #player portrait:noxie_confused
+I will be waiting for you to return with an essence! #speaker:Mortis #portrait:mortis_happy #layout:right #player portrait:noxie_neutral
 ->END
 
 === essence ===
@@ -83,7 +94,7 @@ Allow me.
 (Mortis inserts the essence into some kind of machine. It groans and creaks as it processes it.) #portrait:invis #player portrait:invis #layout:none
 (Eventually it finishes the task and a glass tube opens up to reveal a pair of arms.)
 Voila! I have made you a new pair of arms! #portrait:mortis_happy #player portrait:noxie_thinking #layout:right
-How did you do that???#speaker:Noxie #portrait:mortis_happy #player portrait:noxie_confused #layout:left
+How did you do that???#speaker:??? #portrait:mortis_happy #player portrait:noxie_confused #layout:left
 As much as I would love to get into the details, I shall simplify it for you.#speaker:Mortis  #layout:right
 Very very verrry simply, I took that essence and infused it with the preserved limbs of a recently deceased. 
 And now you should be able to detach those arms and equip these ones and use their power!

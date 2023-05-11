@@ -1,6 +1,8 @@
 INCLUDE Globals.ink
 {ciara_reading == true: -> fantasy}
 {ciara_completed == true: -> complete}
+->intro
+=== intro ===
 Hello. #speaker:Ciara #portrait:ciara_neutral #player portrait:noxie_neutral #layout:right
 Do you need something?
 (Oh no. I didn't think this far ahead.) #speaker:Noxie #layout:left
@@ -10,6 +12,7 @@ Do you need something?
 
 * [Ask about what she's doing] -> ask
 * [Ask about hobbies] -> hobbies
+* ->END
 
 === ask ===
 So... whatcha doin? #speaker:Noxie #layout:left
@@ -22,7 +25,7 @@ A job... that's... great... I guess? #speaker:Noxie #layout:left
 Sure. #speaker:Ciara #layout:right
 Are you done bothering me now?
 //~ ciara_met = true
-->END
+->intro
 
 === hobbies ===
 What do you like to do for fun? #speaker:Noxie #layout:left
@@ -34,10 +37,8 @@ Oh, okay. Read about what? #speaker:Noxie #layout:left
 It doesn't matter. #speaker:Ciara #layout:right
 Not like I'd expect you to understand anyway.
 Er, okay sorry. I'll leave now. #speaker:Noxie #layout:left
-I might understand you a bit better than you think... #portrait:invis
-For now... I wonder if there's something around here that might help me connect with her.
 ~ ciara_met = true
-->END
+->intro
 
 === fantasy ===
 Have you ever read "The Witch's House"? #speaker:Ciara #portrait:ciara_neutral #player portrait:noxie_neutral #layout:left

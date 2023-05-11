@@ -20,14 +20,13 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying && !PlayerMovement.isPaused)
         {
-            visualCue.SetActive(true); 
+
+            visualCue.SetActive(true);
 
             if (Input.GetButtonDown("Interact"))
             {
                 visualCue.SetActive(false); 
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
-
-                //TODO: roadblock dialogue is kind of buggy -- idk why the overlay moves away ? its only on this.... 
             }
         }
         else 
