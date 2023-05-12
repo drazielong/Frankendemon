@@ -12,6 +12,8 @@ public class ItemController : MonoBehaviour
 
     [Header("Correct Power")]
     [SerializeField] private string correctPower;
+    [Header("Next Area Scene Index")]
+    [SerializeField] private int nextAreaIndex;
     private bool playerInRange;
     private void Awake()
     {
@@ -26,15 +28,15 @@ public class ItemController : MonoBehaviour
             if (Input.GetButtonDown("Interact"))
             {
                 visualCue.SetActive(false); 
-                DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
-
-                /*
-                if(this.CompareTag("interEssence"))
+                
+                if(this.CompareTag("interItem"))
                 {
-                    DialogueManager.GetInstance().ContinueStory();
-                    gameObject.SetActive(false);
+                    LevelLoader.GetInstance().LoadLevelArea(nextAreaIndex);
+                    //SceneManager.MoveGameObjectToScene(Player, nextAreaIndex);
+                    return;
                 }
-                */
+
+                DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
                 
                 //we keep the ink variable for ink purposes, but for this we made another variable
                 //that holds the same info for unity purposes :)
