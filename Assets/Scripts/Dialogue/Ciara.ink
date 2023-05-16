@@ -9,10 +9,12 @@ Do you need something?
 //Hey, can you share your essence with me? #speaker:Noxie #layout:left
 //Uh, that's a bit forward... #speaker:Ciara #layout:right
 //(Maybe I should get to know her first.) #speaker:Noxie #layout:left #player portrait:noxie_thinking
+->Q
 
+=== Q ===
 * [Ask about what she's doing] -> ask
 * [Ask about hobbies] -> hobbies
-* ->END
+->END
 
 === ask ===
 So... whatcha doin? #speaker:Noxie #layout:left
@@ -25,7 +27,7 @@ A job... that's... great... I guess? #speaker:Noxie #layout:left
 Sure. #speaker:Ciara #layout:right
 Are you done bothering me now?
 //~ ciara_met = true
-->intro
+->Q
 
 === hobbies ===
 What do you like to do for fun? #speaker:Noxie #layout:left
@@ -36,9 +38,8 @@ If it will satisfy you, I like to read.
 Oh, okay. Read about what? #speaker:Noxie #layout:left
 It doesn't matter. #speaker:Ciara #layout:right
 Not like I'd expect you to understand anyway.
-Er, okay sorry. I'll leave now. #speaker:Noxie #layout:left
 ~ ciara_met = true
-->intro
+->Q
 
 === fantasy ===
 Have you ever read "The Witch's House"? #speaker:Ciara #portrait:ciara_neutral #player portrait:noxie_neutral #layout:left

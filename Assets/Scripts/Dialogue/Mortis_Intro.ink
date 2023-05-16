@@ -31,9 +31,9 @@ But not just any necromancy, no no no we are not so simple here.
 I caught your faint little human soul and reengineered it for a demon's body. 
 Obviously this body is made up of multiple different long passed demons, not a single uniform body because believe it or not it's hard to find one whole, put together, BODY in the DECAY domain of all places,
 Wait, I DIED??? #speaker:??? #layout:left #player portrait:noxie_angry
-Like, all the way? #player portrait:noxie_confused
-Well, sure. How else would I have gotten your soul? By extracting it directly? 
-That’s preposterous. #speaker:Mortis #layout:right
+Like, all the way? 
+Well, sure. How else would I have gotten your soul? By extracting it directly? #speaker:Mortis #layout:right
+That’s preposterous. 
 ??? #speaker:??? #layout:left #player portrait:noxie_confused
 //Uh, that doesn’t sound any more crazy than anything else you just told me… #speaker:??? #layout:left #player portrait:noxie_sigh
 //Bah, I say do not dwell on the past. You cannot change what you cannot change. #speaker:Mortis #layout:right

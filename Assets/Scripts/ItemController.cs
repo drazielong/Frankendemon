@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ItemController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class ItemController : MonoBehaviour
     [SerializeField] private string correctPower;
     [Header("Next Area Scene Index")]
     [SerializeField] private int nextAreaIndex;
+    //public GameObject Player;
     private bool playerInRange;
     private void Awake()
     {
@@ -32,7 +34,10 @@ public class ItemController : MonoBehaviour
                 if(this.CompareTag("interItem"))
                 {
                     LevelLoader.GetInstance().LoadLevelArea(nextAreaIndex);
-                    //SceneManager.MoveGameObjectToScene(Player, nextAreaIndex);
+                    //load both scenes at the same time to use this :/
+                    //the vars will be fine if you switch levels but like... your power will reset for one
+                    //second i think npcs will reset positions and roadblocks ?
+                    //SceneManager.MoveGameObjectToScene(Player, SceneManager.GetSceneByBuildIndex(nextAreaIndex));
                     return;
                 }
 

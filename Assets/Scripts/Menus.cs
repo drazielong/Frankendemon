@@ -9,10 +9,6 @@ using UnityEngine.UI;
 
 public class Menus: MonoBehaviour
 {   
-    void Start()
-    {
-        //Cursor.lockState = CursorLockMode.Locked;
-    }
     public void MainMenu()
     {
         SceneManager.LoadScene(0);

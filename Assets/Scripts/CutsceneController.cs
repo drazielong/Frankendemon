@@ -12,6 +12,7 @@ public class CutsceneController : MonoBehaviour
     [SerializeField] private CanvasGroup dialogueController;
     [SerializeField] private Animator transition;
     [SerializeField] private  float transitionTime = 1f;
+    [SerializeField] private GameObject blackoutObj;
     
     [Header("Ink JSON")]
     [SerializeField] private TextAsset inkJSON;
@@ -96,6 +97,7 @@ public class CutsceneController : MonoBehaviour
 
         Debug.Log("Destroying trigger, resets");
         Destroy(this);
+        Destroy(blackoutObj);
         playerInRange = false;
         Globals.cutscene = false;
         videoPlayer.targetTexture = null;

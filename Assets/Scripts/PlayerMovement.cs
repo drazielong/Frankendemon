@@ -116,7 +116,6 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        //I really need to get the unity extension so i can see the parameters for unity shit
         return Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0f, Vector2.down, .1f, jumpableGround); 
     }
 
