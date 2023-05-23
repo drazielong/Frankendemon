@@ -1,23 +1,38 @@
 INCLUDE globals.ink
-Thank you for coming to visit. #speaker:Pedia #portrait:default #player portrait:noxie_neutral #layout:right
+Thank you for coming to visit. #speaker:Pedia #portrait:pedia_neutral #player portrait:noxie_neutral #layout:right
 This is the Blackthorn library. 
 How may I help you?
 
 //if noxie has met ciara
 //ask about her reading history
-{ciara_met == true: 
-* [Ask about Ciara] -> ciara
+{ana_met == true: 
+* [Ask for elephant pictures] -> ana
 }
 * [Talk to Pedia] -> comics
 
-=== ciara ===
-Hey, so does a demon named Ciara come around here often? #speaker:Noxie #portrait:default #player portrait:noxie_neutral #layout:left
-Oh yes, the crow demon. She often checks out books from the fantasy section. #speaker:Pedia #layout:right
-Oh ok. #speaker:Noxie #layout:left
-...
-Actually can I see some of those books?
-~ ciara_reading = true
+=== ana  ===
+I’m looking for elephants. #speaker:Noxie #layout:left #player portrait:noxie_neutral
+
+Yes, we do have books on those in the human section. #speaker:Pedia #layout:right 
+Is there anything in particular you need?
+
+...I need a picture of an elephant. #speaker:Noxie #layout:left
+
+Certainly. I have zoology books, children’s books, #speaker:Pedia #layout:right
+
+Just give me the first thing you got. #speaker:Noxie #layout:left
+
+Of course. #speaker:Pedia #layout:right
+~ cutscene = true
+
+Whoa. #speaker:Noxie #layout:left
+~ cutscene = false
+Uh, thanks. 
+
+Have a good day. #speaker:Pedia #layout:right
+~ ana_reading = true
 ->END
+
 === comics ===
-Wow you have a lot of books here.
+Wow you have a lot of books here. #speaker:Noxie #layout:left
 ->END

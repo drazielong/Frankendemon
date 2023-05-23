@@ -17,6 +17,7 @@ public class CutsceneController : MonoBehaviour
     [Header("Ink JSON")]
     [SerializeField] private TextAsset inkJSON;
     [SerializeField] private bool isDialogueTrigger;
+    [SerializeField] private bool isCutsceneTrigger;
     private bool playerInRange;
     public static bool cutsceneIsPlaying;
     private bool endReached;
@@ -40,13 +41,16 @@ public class CutsceneController : MonoBehaviour
             DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
             DialogueManager.GetInstance().ContinueStory();
         }
-        
-        //playerInRange activates cutscene if player hits a trigger
-        //Globals.cutscene check is to activate a cutscene in the middle of dialogue
-        if ((playerInRange && !isDialogueTrigger || Globals.cutscene == true) && !cutsceneIsPlaying)
+        else if ((playerInRange && isCutsceneTrigger || playerInRange && Globals.cutscene == true) && !cutsceneIsPlaying)
         {
+            //playerInRange activates cutscene if player hits a trigger
+            //Globals.cutscene check is to activate a cutscene in the middle of dialogue
             videoPlayer.targetTexture = texture; //WE CAN REUSE THE CANVAS AND TEXTURE YIPPEEEEEEE
             StartCoroutine(PlayCutscene());
+        }
+        else if (playerInRange)
+        {
+            videoPlayer.targetTexture = texture;
         }
         
         if (endReached && !endingCutscene)

@@ -16,6 +16,11 @@ VAR ciara_completed = false
 VAR ciara_met = false
 VAR ciara_reading = false
 
+//Ana
+VAR ana_met = false
+VAR ana_completed = false
+VAR ana_reading = false
+
 //Pedia
 VAR pedia_completed = false
 VAR pedia_met = false
