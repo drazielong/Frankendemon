@@ -119,6 +119,12 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0f, Vector2.down, .1f, jumpableGround); 
     }
 
+    public void TeleportPlayer(float x, float y, float z)
+    {
+        //pause player movement? 
+        this.transform.position = new Vector3(x, y, z);
+    }
+
     public void PauseGame()
     {
         //select "resolution" obj from the pause menu as "first selected" in event sys
