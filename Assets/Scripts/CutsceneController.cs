@@ -13,7 +13,7 @@ public class CutsceneController : MonoBehaviour
     [SerializeField] private CanvasGroup dialogueController;  //so we can hide dialogue
     [SerializeField] private Animator transition;  //grabbing transition
     [SerializeField] private  float transitionTime = 1f;  //transition time (idk if im ever gonna change this)
-    [SerializeField] private GameObject blackoutObj;  //when entering a scene, enable this so we dont see the game before the cutscene loads
+    //[SerializeField] public GameObject blackoutObj;  //when entering a scene, enable this so we dont see the game before the cutscene loads
     [SerializeField] private TextAsset inkJSON;  //ink file to play if cutscene is dialogue trigger
 
     [SerializeField] private GameObject disableNPC; //npc to disable
@@ -34,6 +34,7 @@ public class CutsceneController : MonoBehaviour
     public static bool cutsceneIsPlaying;
     private bool endReached;
     private bool endingCutscene = false;
+    
     private void Start()
     {
         videoCanvas.SetActive(false);
@@ -72,12 +73,11 @@ public class CutsceneController : MonoBehaviour
         {
             //enter params per cutscene (god damn this file is getting crazy)
             //ima be honest i might need some other way to enable and disable multiple NPCs
-            if (IsTeleportTrigger)
+            if (isTeleportTrigger)
             {
-                PlayerMovement.TeleportPlayer(x, y, z);
+                PlayerMovement.GetInstance().TeleportPlayer(x, y, z);
                 enableNPC.SetActive(true);
                 disableNPC.SetActive(false);
-                IsTeleportTrigger = false;
             }
             StartCoroutine(EndCutscene());
         }        
@@ -125,7 +125,7 @@ public class CutsceneController : MonoBehaviour
 
         Debug.Log("Destroying trigger, resets");
         Destroy(this);
-        Destroy(blackoutObj);
+        LevelLoader.blackoutObj.SetActive(false);
         playerInRange = false;
         Globals.cutscene = false;
         videoPlayer.targetTexture = null;

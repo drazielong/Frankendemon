@@ -10,6 +10,13 @@ public class LevelLoader : MonoBehaviour
     public float transitionTime = 1f;
     private static LevelLoader instance; //stole instance from dialoguemanager so i dont have to get component
 
+    public static GameObject blackoutObj;
+
+    private void Awake()
+    {
+        blackoutObj = GameObject.Find("Blackout");
+    }
+
     void Start ()
     {
         instance = this;
@@ -23,14 +30,10 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
-    //erm idk we gotta make this work
-    public void LoadLevelArea(int sceneIndex) //like buildings
+    public void LoadLevelArea(float x, float y, float z) //like buildings
     {
-        StartCoroutine(LoadLevel(sceneIndex)); 
+        StartCoroutine(LoadArea(x, y, z)); 
     }
-
-    //we can consider other areas of a domain that change the screen to be "levels" but buildings would be temporary areas <-map out
-    //still name them in order tho? just bc we r using index
 
     IEnumerator LoadLevel(int levelIndex)
     {
@@ -40,5 +43,13 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
         //load 
         SceneManager.LoadScene(levelIndex);
+    }
+
+    IEnumerator LoadArea(float x, float y, float z)
+    {
+        transition.Play("Crossfade_Start");
+        yield return new WaitForSeconds(transitionTime);
+        PlayerMovement.GetInstance().TeleportPlayer(x, y, z);
+        transition.Play("Crossfade_End");
     }
 }

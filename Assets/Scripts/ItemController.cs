@@ -13,8 +13,15 @@ public class ItemController : MonoBehaviour
 
     [Header("Correct Power")]
     [SerializeField] private string correctPower;
-    [Header("Next Area Scene Index")]
-    [SerializeField] private int nextAreaIndex;
+    /*
+    [Header("Next Scene Index")]
+    [SerializeField] private int nextSceneIndex;
+    */
+    [Header("Player Position TP")]
+    [SerializeField] private float x;
+    [SerializeField] private float y;
+    [SerializeField] private float z;
+
     //public GameObject Player;
     private bool playerInRange;
     private void Awake()
@@ -33,7 +40,7 @@ public class ItemController : MonoBehaviour
                 
                 if(this.CompareTag("interItem"))
                 {
-                    LevelLoader.GetInstance().LoadLevelArea(nextAreaIndex);
+                    LevelLoader.GetInstance().LoadLevelArea(x, y, z);
                     //load both scenes at the same time to use this :/
                     //the vars will be fine if you switch levels but like... your power will reset for one
                     //second i think npcs will reset positions and roadblocks ?

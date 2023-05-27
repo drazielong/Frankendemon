@@ -27,7 +27,12 @@ public class PlayerMovement : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject pauseResolution;
 
-    // Start is called before the first frame update
+    private static PlayerMovement instance;
+
+    public static PlayerMovement GetInstance()
+    {
+        return instance;
+    }
     private void Start()
     {
         //affecting components in unity
@@ -35,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
         collider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+
+        instance = this;
     }
 
     private void Update()
