@@ -62,7 +62,7 @@ public class CutsceneController : MonoBehaviour
         {
             //playerInRange activates cutscene if player hits a trigger
             //Globals.cutscene check is to activate a cutscene in the middle of dialogue
-            videoPlayer.targetTexture = texture; //WE CAN REUSE THE CANVAS AND TEXTURE YIPPEEEEEEE
+            videoPlayer.targetTexture = texture;
             StartCoroutine(PlayCutscene());
         }
         else if (playerInRange)
@@ -121,6 +121,12 @@ public class CutsceneController : MonoBehaviour
         
         cutsceneIsPlaying = false; //finally we can regain movement
 
+        Debug.Log("Destroying trigger, resets");
+        Destroy(this);
+        playerInRange = false;
+        Globals.cutscene = false;
+        videoPlayer.targetTexture = null;
+
         //play post cutscene dialogue if dialogue has not already been playing
         if (!DialogueManager.GetInstance().dialogueIsPlaying && !isDialogueTrigger)
         {
@@ -136,12 +142,6 @@ public class CutsceneController : MonoBehaviour
         {
             disableOBJ.SetActive(false);
         }
-
-        Debug.Log("Destroying trigger, resets");
-        Destroy(this);
-        playerInRange = false;
-        Globals.cutscene = false;
-        videoPlayer.targetTexture = null;
     }
 
     void EndReached(UnityEngine.Video.VideoPlayer vp) //end of vid thing

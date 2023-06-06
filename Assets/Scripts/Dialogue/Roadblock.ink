@@ -4,7 +4,16 @@ INCLUDE globals.ink
 -> blocked
 
 === blocked ===
+{ana_met == false:
 These things are blocking the way. #speaker:Noxie #portrait:invis #player portrait:noxie_neutral #layout:left
+
+I know someone who works at Body Building who can probably help... #speaker:Dearil #portrait:dearil_shy #layout:right
+
+Are they gonna rip them out of the ground? #speaker:??? #player portrait:noxie_thinking #layout:left
+}
+{ana_met == true:
+Ugh more of these plants... #speaker:Noxie #portrait:invis #player portrait:noxie_neutral #layout:left
+}
 ->END
 
 === unblocked ===

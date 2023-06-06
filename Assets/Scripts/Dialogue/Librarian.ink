@@ -35,10 +35,10 @@ Have a good day. #speaker:Pedia #layout:right
 ->END
 
 === comics ===
-Hello #speaker:Pedia #layout:right
+Is it something unrelated to books? #speaker:Pedia #layout:right
 {ana_reading == true:
-Can you do that puppet string thing again? #speaker:Noxie #layout:left
+Can you do that puppet string thing again? #speaker:??? #layout:left
 }
-{ana_reading == false: You have a lot of books here.} #speaker:??? #layout:left
+{ana_reading == false: So are books like made of flesh to you cause you're made of wood?} #speaker:??? #layout:left
 ... #speaker:Pedia #layout:right
 ->END

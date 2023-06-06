@@ -4,16 +4,7 @@ INCLUDE Globals.ink
 {ana_reading == true: -> reading}
 {ana_met == true: -> met}
 
-=== test === 
-~ tp = true
-teleport me. #speaker:Noxie #layout:left #player portrait:noxie_neutral #portrait:ana_neutral
-~ tp = false
-thanks i guess
-at least it shouldve worked
--> help
-
-
-I heard you could move those plants down that path. #speaker:Noxie #layout:left #player portrait:noxie_neutral #portrait:ana_neutral
+I heard you could move those plants down that path. #speaker:??? #layout:left #player portrait:noxie_neutral #portrait:ana_neutral
 
 Well, hello. #speaker:??? #layout:right 
 Nice to meet you, too.

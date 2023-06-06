@@ -1,9 +1,9 @@
-Sup. #speaker:Drazie #portrait:default #player portrait:noxie_neutral #layout:right
+Sup. #speaker:Drazie #portrait:drazie_neutral #player portrait:noxie_neutral #layout:right
 Looks like you made it to the end of the demo. Congrats.
 I'm actually based on the creator, soooo I guess I'm the self insert.
-Like this is my dragon-demon sona.
+Like this is my dragon-demon sona. #portrait:drazie_dragon
 ...
-Anyway
+Anyway #portrait:drazie_neutral
 Since this is the end of the demo, I'll just ramble about the game!
 Feel free to like, quit or something.
 
@@ -25,6 +25,7 @@ It's a visual novel, so it's much easier to work on and there's no learning curv
 
 I thought I would make a variety of expressions for the characters, but I ended up needing to spend more time on piecing everything together to be playable.
 It was difficult to sit down and FOCUS to learn what I need to learn.
+It's really easy to get distracted.
 I think I got the basics down, though. 
 My favorite system is the cutscene manager.
 It is one of the only systems I designed entirely on my own, and I felt like I was really able to put what I learned into practice.
@@ -37,6 +38,9 @@ Something that keeps me going in projects when I lose interest is I find somethi
 Here, it's clearly this little endgame area. I really enjoy adding "dev talk back" in my games when applicable. 
 Did you like those cutscenes? 
 Those are the two types of cutscenes that my system can produce, one that plays in the middle of dialogue (and can even be a dialogue trigger), and one that plays automatically with some dialogue after.
+I guess it can also teleport you and enable/disable objects...
+And it's clearly still buggy somewhat...
+Still, it's something I figured out on my own.
 
 Ya know, the process of making something on my own and going through the whole thing has made me more confident in branching out into other game engines and just making games in general.
 You just gotta dive right in, as most would say.
@@ -54,7 +58,7 @@ In the game, I ended up altering the circumstances a bit, of course.
 When I first drafted the game, I wanted Noxie's personality to be where it would be at the "end" of their journey- where they're more extroverted and loud and fun.
 This was because I was leaning towards a more... low stakes story?
 That didn't make sense with their current design, and there's nowhere narratively for Noxie to go from there, so I reverted them back. 
-I this one idea to let the player view replays of cutscenes in Mortis' tower, as a stretch goal.
+I had this one idea to let the player view replays of cutscenes in Mortis' tower, as a stretch goal.
 The player would hook their brain up to a crt-tv and choose which scenes to replay as if you're viewing memories.
 
 In terms of the gameplay, I did scrap several ideas.
@@ -87,7 +91,7 @@ Sort of explained with the soulplants, but the land you walk upon is alive.
 It naturally produces demons on it's own, even without the help of people like Ana who assist in the process.
 Because this area is also known to collect history, I'd imagine that demons who settle here built their little society around organizing the reincarnation process.
 
-I hope that helps explain what's happening here a bit.
+I hope that helps explain what's happening here a bit?
 
 -> Q
 
