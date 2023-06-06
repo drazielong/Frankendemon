@@ -55,7 +55,7 @@ I have some unfinished business I need to take care of. #speaker:??? #layout:lef
 
 If you ask me, whatever's there should stay there. It's much nicer here. #speaker:Mortis #layout:right
 
-... (glare emote) #speaker:??? #layout:left
+... #speaker:??? #layout:left
 
 Well, if you MUST insist... #speaker:mortis #layout:right
 I SUPPOSE I could aid you on this journey, but in exchange you must do something for me!
@@ -66,9 +66,9 @@ I don't even know what those things are. #speaker:??? #layout:left
 You will know it when you see it! #speaker:mortis #layout:right
 My assistant will accompany you.
 
-Hello, that's me... (sprite replaces mortis) #speaker:dearil
+Hello, that's me... #speaker:dearil #portrait:dearil_shy
 
-I don't need a babysitter. Or to be a babysitter. Whatever. #speaker:??? #layout:left
+I don't need a babysitter. Or to be a babysitter. Whatever. #speaker:??? #layout:left #portrait:mortis_happy
 Just tell me the way to go.
 
 You see, Dearil is both my insurance AND your guide to this world. #speaker:mortis #layout:right
@@ -91,18 +91,27 @@ I will be waiting for you to return with an essence! #speaker:Mortis #portrait:m
 I see you've found an essence from someone!#speaker:Mortis #portrait:mortis_happy #layout:right #player portrait:noxie_neutral
 As I suspected, you can't interact with it as demons normally would.
 Allow me.
-(Mortis inserts the essence into some kind of machine. It groans and creaks as it processes it.) #portrait:invis #player portrait:invis #layout:none
+
+(Mortis inserts the essence into some kind of machine. It groans and creaks as it processes it.) #portrait:invis #player portrait:invis #companion portrait:invis #layout:none
 (Eventually it finishes the task and a glass tube opens up to reveal a pair of arms.)
-Voila! I have made you a new pair of arms! #portrait:mortis_happy #player portrait:noxie_thinking #layout:right
-How did you do that???#speaker:??? #portrait:mortis_happy #player portrait:noxie_confused #layout:left
-As much as I would love to get into the details, I shall simplify it for you.#speaker:Mortis  #layout:right
-Very very verrry simply, I took that essence and infused it with the preserved limbs of a recently deceased. 
+
+Voila! These are now yours to attach at will. #portrait:mortis_happy #player portrait:noxie_neutral #layout:right
+How did you do that??? #speaker:Noxie #portrait:mortis_happy #player portrait:noxie_confused #layout:left
+Very very verrry simply, I took that essence and infused it with the preserved limbs of a recently deceased. #speaker:Mortis  #layout:right
 And now you should be able to detach those arms and equip these ones and use their power!
+
+In this case, the power would be Ana's X-Ray vision. #speaker:Dearil #portrait:dearil_neutral 
+
+Oooooh, so THAT'S how she knew where the thing was earlier? #speaker:Noxie #player portrait:noxie_thinking #layout:left
+
+Yes. Now when you use her power, you should be able to see it, too. #speaker:Dearil #layout:right
+I'll be able to swap out your limbs for you as we keep going.
+Maybe we can try it out on that other patch of soul plants up ahead?
+
 ~ has_rawEssence = false
-~ power_name = "Ciara"
+~ power_name = "Ana"
 ~ essence_name = ""
 ~ mortis_completed = true
-All thanks to my genius.
 ->END
 
 === helloagain ===

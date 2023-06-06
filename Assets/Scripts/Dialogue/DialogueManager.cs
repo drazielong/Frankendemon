@@ -76,6 +76,11 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
+        if (CutsceneController.cutsceneIsPlaying || DialogueTrigger.tpIsPlaying)
+        {
+            return;
+        }
+
         if (Input.GetButtonDown("Interact"))
         {
             skip = true;
@@ -91,7 +96,7 @@ public class DialogueManager : MonoBehaviour
             && currentStory.currentChoices.Count == 0 
             && Input.GetButtonDown("Interact"))
         {
-            ContinueStory();  
+            ContinueStory();
         }
     
         //player can cancel dialogue at any time with "x" <- idk if we wanna keep this but for testing idc
@@ -137,6 +142,7 @@ public class DialogueManager : MonoBehaviour
             {
                 StopCoroutine(displayLineCoroutine);
             }
+            //handle tags first? does it matter?
             displayLineCoroutine = StartCoroutine(DisplayLine(currentStory.Continue()));
             HandleTags(currentStory.currentTags);
         }

@@ -6,6 +6,7 @@ VAR power_name = "Noxie" //current power equipped
 VAR correct_power = "" //correct power
 VAR typing_speed = 0.02 
 VAR cutscene = false 
+VAR tp = false
 
 //Mortis
 VAR mortis_completed = false
@@ -19,6 +20,7 @@ VAR ciara_reading = false
 //Ana
 VAR ana_met = false
 VAR ana_completed = false
+VAR ana_help = false
 VAR ana_reading = false
 
 //Pedia

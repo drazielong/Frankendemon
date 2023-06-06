@@ -31,8 +31,14 @@ Uh, thanks.
 
 Have a good day. #speaker:Pedia #layout:right
 ~ ana_reading = true
+~ ana_met = false
 ->END
 
 === comics ===
-Wow you have a lot of books here. #speaker:Noxie #layout:left
+Hello #speaker:Pedia #layout:right
+{ana_reading == true:
+Can you do that puppet string thing again? #speaker:Noxie #layout:left
+}
+{ana_reading == false: You have a lot of books here.} #speaker:??? #layout:left
+... #speaker:Pedia #layout:right
 ->END

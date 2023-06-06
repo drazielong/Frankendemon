@@ -52,7 +52,7 @@ public class ItemController : MonoBehaviour
                 
                 //we keep the ink variable for ink purposes, but for this we made another variable
                 //that holds the same info for unity purposes :)
-                if(this.CompareTag("interRoadblock") && Globals.currentPower == correctPower) 
+                if((this.CompareTag("interRoadblock") && Globals.currentPower == correctPower) || this.CompareTag("interEssence"))
                 {
                     gameObject.SetActive(false);
                 }

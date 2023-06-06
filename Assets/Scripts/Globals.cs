@@ -12,6 +12,7 @@ public class Globals
     public static string correctPower;
     public static float typingSpeed;
     public static bool cutscene;
+    public static bool tp;
     public static List<string> powerList = new List<string>(); //list of powers you've collected. entry 0 will be your default look 
 
     static public void VarCheck()
@@ -39,5 +40,9 @@ public class Globals
         cutscene = ((Ink.Runtime.BoolValue) DialogueManager
             .GetInstance()
             .GetVariableState("cutscene")).value;
+
+        tp = ((Ink.Runtime.BoolValue) DialogueManager
+            .GetInstance()
+            .GetVariableState("tp")).value;
     }
 }

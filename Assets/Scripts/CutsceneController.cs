@@ -13,16 +13,16 @@ public class CutsceneController : MonoBehaviour
     [SerializeField] private CanvasGroup dialogueController;  //so we can hide dialogue
     [SerializeField] private Animator transition;  //grabbing transition
     [SerializeField] private  float transitionTime = 1f;  //transition time (idk if im ever gonna change this)
-    //[SerializeField] public GameObject blackoutObj;  //when entering a scene, enable this so we dont see the game before the cutscene loads
+    [SerializeField] public GameObject blackoutObj;  //when entering a scene, enable this so we dont see the game before the cutscene loads
     [SerializeField] private TextAsset inkJSON;  //ink file to play if cutscene is dialogue trigger
 
-    [SerializeField] private GameObject disableNPC; //npc to disable
-    [SerializeField] private GameObject enableNPC; //npc to enable
+    [SerializeField] private GameObject disableOBJ; //npc OR OBJ to disable
+    [SerializeField] private GameObject enableOBJ; //npc to enable
 
     [Header("Booleans")]
     [SerializeField] private bool isDialogueTrigger; //if trigger activates dialogue pre-cutscene
     [SerializeField] private bool isCutsceneTrigger; //if trigger immediately plays cutscene
-    [SerializeField] private bool isTeleportTrigger; //if trigger tps player after cutscene
+    [SerializeField] private bool isTeleportTrigger; //if trigger tps player RIGHT AFTER cutscene (ex: dearil)
 
     [Header("Player Coords")]
     [SerializeField] private float x; 
@@ -49,8 +49,9 @@ public class CutsceneController : MonoBehaviour
         //note: to play dialogue on entry to an area, then play a cutscene, add a trigger with the dialogue JSON
         //then make globals.cutscene = true in script. add at LEAST 2 lines after the cutscene ends before resetting to false
             //uh this is actually dependent on the type of cutscene we r dealing with
-        //cuz when the cutscene starts it goes to the next line, and if we set it to false after that line it wont work
-        if (playerInRange && isDialogueTrigger && !DialogueManager.GetInstance().dialogueIsPlaying)
+        if (playerInRange 
+        && isDialogueTrigger 
+        && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
             DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
             DialogueManager.GetInstance().ContinueStory();
@@ -76,8 +77,8 @@ public class CutsceneController : MonoBehaviour
             if (isTeleportTrigger)
             {
                 PlayerMovement.GetInstance().TeleportPlayer(x, y, z);
-                enableNPC.SetActive(true);
-                disableNPC.SetActive(false);
+                //enableOBJ.SetActive(true);
+                //disableOBJ.SetActive(false);
             }
             StartCoroutine(EndCutscene());
         }        
@@ -103,7 +104,11 @@ public class CutsceneController : MonoBehaviour
     private IEnumerator EndCutscene()
     {
         endingCutscene = true; //this is so we dont have this ienum constantly rerunning while endReached=true
-
+        if (blackoutObj != null)
+        {
+            LevelLoader.blackoutObj.SetActive(false); //just for the intro
+        }
+    
         transition.Play("Crossfade_Start");
         yield return new WaitForSeconds(transitionTime);
 
@@ -123,9 +128,17 @@ public class CutsceneController : MonoBehaviour
             DialogueManager.GetInstance().ContinueStory();
         }
 
+        if (enableOBJ != null)
+        {
+            enableOBJ.SetActive(true);
+        }
+        if (disableOBJ != null)
+        {
+            disableOBJ.SetActive(false);
+        }
+
         Debug.Log("Destroying trigger, resets");
         Destroy(this);
-        LevelLoader.blackoutObj.SetActive(false);
         playerInRange = false;
         Globals.cutscene = false;
         videoPlayer.targetTexture = null;

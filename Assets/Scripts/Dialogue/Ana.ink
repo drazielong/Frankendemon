@@ -1,6 +1,18 @@
 INCLUDE Globals.ink
-{ana_met == true: -> met}
+{ana_completed == true: -> done}
+{ana_help == true: -> help}
 {ana_reading == true: -> reading}
+{ana_met == true: -> met}
+
+=== test === 
+~ tp = true
+teleport me. #speaker:Noxie #layout:left #player portrait:noxie_neutral #portrait:ana_neutral
+~ tp = false
+thanks i guess
+at least it shouldve worked
+-> help
+
+
 I heard you could move those plants down that path. #speaker:Noxie #layout:left #player portrait:noxie_neutral #portrait:ana_neutral
 
 Well, hello. #speaker:??? #layout:right 
@@ -67,7 +79,7 @@ It’s easy. It’s huge and it has big ears and a trunk.
 I’m sorry, but I don’t think that description is, um, descriptive enough. #speaker:Ana #layout:right
 Maybe if I could see a picture of it?
 
-Oh I know just the place! #speaker:Dearil #layout:subleft #companion portrait:dearil_neutral
+Why don't we go try the library? #speaker:Dearil #layout:subleft #companion portrait:dearil_neutral
 ~ ana_met = true
 ->END
 
@@ -76,18 +88,61 @@ I’d like to see a picture of an elephant, please. #speaker:Ana #layout:right #
 ->END
 
 === reading ===
-There’s a picture of an elephant in this. #speaker:Noxie #layout:left #player portrait:noxie_neutral
-Oh! #speaker:Ana #layout:right #portrait:ana_neutral
+There’s a picture of an elephant in this. #speaker:Noxie #layout:left #player portrait:noxie_neutral #portrait:ana_neutral
+Oh! #speaker:Ana #layout:right
 Wow this is fascinating. 
 This is perfect, thank you!
 ~ cutscene = true
 
-Huh?? That’s not an elephant. #speaker:Noxie #layout:left
+Huh? That’s not an elephant. #speaker:Noxie #layout:left #player portrait:noxie_confused
+~ cutscene = false
 
 Thank you so much! #speaker:Ana #layout:right
 I think I’m gonna keep reading this, there’s so many different creatures in here. 
 When they see how good I am at this they’ll just be begging me to make demons!
-How about I go help you with your problem now?
+
+Uh huh, I'm sure they will... #speaker:Noxie #layout:left #player portrait:noxie_sigh
+
+How about I go help you with your problem now? #speaker:Ana #layout:right
+
+~ tp = true
+~ ana_help = true
+->help
+
+== help ===
+Basically, soul plants are actually one big organism. #speaker:Ana #layout:right
+If you know where it is, there’s a spot you can touch that makes them retract for a while.
+~ cutscene = true
+
+How come you know where it is? #speaker:Noxie #layout:left
 ~ cutscene = false
+
+Well because I can see it! #speaker:Ana #layout:right
+
+I can't see anything. #speaker:Noxie #layout:left
+
+How about I show you, then? #speaker:Ana #layout:right
+I have to go back to work, but I want to share something with you.
+Take it as a token of my gratitude. 
+~ tp = true
+
+Good luck on your journey, Noxie.
+(Ana returns to her job) #portrait:invis #player portrait:invis #layout:none
+
+~ tp = false
+~ essence_name = "Ana"
+~ essence_activate = true
 ~ ana_completed = true
+-> END
+
+=== done === 
+How's it going? #speaker:Ana #layout:right #player portrait:noxie_neutral #portrait:ana_neutral
+Need help again?
+
+Nope. Just passing through. #speaker:Noxie #layout:left
+
+Oh just here to see me, huh. #speaker:Ana #layout:right
+I'm flattered!
+
+... #speaker:Noxie #layout:left #player portrait:noxie_sigh
 ->END
